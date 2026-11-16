@@ -155,3 +155,8 @@ select{border-radius:10px}
 .next-product-button:focus-visible{outline:3px solid #f4bc56;outline-offset:3px}
 .product{scroll-margin-top:16px}
 @media(max-width:600px){.next-product-button:not([hidden]){right:12px;bottom:calc(12px + env(safe-area-inset-bottom));padding:10px 15px;min-height:58px}}
+
+/* Reveal the navigation header on upward scrolling without obscuring products. */
+.site-header{position:sticky;top:0;z-index:100;transition:transform .2s ease;will-change:transform}
+.site-header.header-hidden{transform:translateY(-105%)}
+@media(prefers-reduced-motion:reduce){.site-header{transition:none}}

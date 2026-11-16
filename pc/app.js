@@ -1,6 +1,16 @@
 "use strict";
 (() => {
  const menu=document.getElementById("site-menu"),menuButton=document.getElementById("menu-toggle");
+ const header=document.querySelector(".site-header");
+ let previousScroll=window.scrollY;
+ window.addEventListener("scroll",()=>{
+  const current=Math.max(0,window.scrollY);
+  const menuOpen=!!menu&&!menu.hidden;
+  const searchOpen=!!document.getElementById("site-search")&&!document.getElementById("site-search").hidden;
+  if(current<80||menuOpen||searchOpen||current<previousScroll-5){header?.classList.remove("header-hidden");}
+  else if(current>previousScroll+5){header?.classList.add("header-hidden");}
+  previousScroll=current;
+ },{passive:true});
  const searchPanel=document.getElementById("site-search"),searchButton=document.getElementById("search-toggle");
  const search=document.getElementById("product-search"),clear=document.getElementById("search-clear");
  const searchResults=document.getElementById("search-results");
@@ -8,16 +18,17 @@
  menu?.querySelectorAll('a').forEach(a=>a.addEventListener("click",()=>{menu.hidden=true;menuButton.setAttribute("aria-expanded","false");}));
  searchButton?.addEventListener("click",()=>{searchPanel.hidden=!searchPanel.hidden;searchButton.setAttribute("aria-expanded",String(!searchPanel.hidden));if(!searchPanel.hidden)search.focus();});
  const list=document.getElementById("products"),select=document.getElementById("sort-order");
- if(!list)return;
- const cards=Array.from(list.children),tabs=Array.from(document.querySelectorAll(".category-tab"));
+
+ const cards=Array.from(list?.children||[]),tabs=Array.from(document.querySelectorAll(".category-tab"));
  const allCards=Array.from(document.querySelectorAll(".product"));
  const status=document.getElementById("sort-status"),filterStatus=document.getElementById("filter-status");
  let category="all";
- if(cards.length)document.getElementById("sort-control").hidden=false;
+ if(cards.length&&document.getElementById("sort-control"))document.getElementById("sort-control").hidden=false;
  const norm=s=>(s||"").normalize("NFKC").toLocaleLowerCase("ja").trim();
  function render(){
-  const q=norm(search?.value),mode=select.value;
-  const ordered=cards.filter(c=>(category==="all"||c.dataset.category===category)&&(!q||norm(c.textContent).includes(q))).sort((a,b)=>{
+  const q=norm(search?.value),mode=select?.value||"score";
+  const candidates=cards.filter(c=>(category==="all"||c.dataset.category===category)&&(!q||norm(c.textContent).includes(q)));
+  const ordered=(category==="all"?candidates.sort((a,b)=>Number(b.dataset.score)-Number(a.dataset.score)).slice(0,10):candidates).sort((a,b)=>{
    const diff=Number(b.dataset.score)-Number(a.dataset.score);
    if(mode==="discount")return (Number(b.dataset.discount||-1)-Number(a.dataset.discount||-1))||diff;
    if(mode==="price-asc")return Number(a.dataset.price)-Number(b.dataset.price)||diff;
@@ -25,16 +36,31 @@
    return diff;
   });
   cards.forEach(c=>{c.hidden=true});
-  ordered.forEach(c=>{c.hidden=false;list.appendChild(c)});
+  ordered.forEach(c=>{c.hidden=false;list?.appendChild(c)});
   const visible=new Set(ordered);
   let total=ordered.length;
-  allCards.filter(c=>!cards.includes(c)).forEach(c=>{const show=!q||norm(c.textContent).includes(q);c.hidden=!show;if(show)total++});
-  document.querySelectorAll(".gunpla-grade").forEach(section=>{section.hidden=!!q&&!Array.from(section.querySelectorAll(".product")).some(c=>!c.hidden)});
-  filterStatus.textContent=`${category==="all"?"すべてのジャンル":category}・${ordered.length}商品を表示中`;
-  if(searchResults)searchResults.textContent=q?`検索結果：${total}件`:"";
+  allCards.filter(c=>!cards.includes(c)&&!c.closest("#gunpla-products")).forEach(c=>{const show=!q||norm(c.textContent).includes(q);c.hidden=!show;if(show)total++});
+  const gunplaCards=Array.from(document.querySelectorAll("#gunpla-products .product"));
+  const grade=document.querySelector(".gunpla-tab.active")?.dataset.grade||"all";
+  let gunplaVisible=0;
+  gunplaCards.forEach(c=>{
+   const matchesGrade=grade==="all"||c.dataset.category===grade+" ガンプラ";
+   const show=matchesGrade&&(!q||norm(c.textContent).includes(q));
+   c.hidden=!show;
+   if(show)gunplaVisible++;
+  });
+  const gunplaStatus=document.getElementById("gunpla-filter-status");
+  if(gunplaStatus)gunplaStatus.textContent=`${grade==="all"?"ガンプラ全体":grade}・${gunplaVisible}商品を表示中`;
+
+  if(filterStatus)filterStatus.textContent=`${category==="all"?"すべてのジャンル":category}・${ordered.length}商品を表示中`;
+  if(searchResults)searchResults.textContent=q?`検索結果：${total+gunplaVisible}件`:"";
   if(status)status.textContent="表示を更新しました";
  }
- select.addEventListener("change",()=>{render();updateNextButton()});
+ select?.addEventListener("change",()=>{render();updateNextButton()});
+ document.querySelectorAll(".gunpla-tab").forEach(tab=>tab.addEventListener("click",()=>{
+  document.querySelectorAll(".gunpla-tab").forEach(b=>{const active=b===tab;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active))});
+  render();updateNextButton();
+ }));
  tabs.forEach(tab=>tab.addEventListener("click",()=>{category=tab.dataset.category;tabs.forEach(b=>{const active=b===tab;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active))});render();updateNextButton()}));
  search?.addEventListener("input",()=>{render();updateNextButton()});
  clear?.addEventListener("click",()=>{search.value="";render();updateNextButton();search.focus()});
