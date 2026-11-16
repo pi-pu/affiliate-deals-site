@@ -87,3 +87,71 @@ select{border-radius:10px}
 .category-tab{min-height:36px;padding:6px 13px}
 .filter-status{margin:0 0 8px}
 @media(max-width:600px){.intro{padding:16px 0 8px}.intro h1{font-size:24px}.ranking-toolbar{margin-top:14px}.ranking-toolbar h2{font-size:20px}}
+
+/* Distinct podium medal colors; rank text follows each medal color. */
+.rank-gold{color:#a97800;background:#fff7dc}
+.rank-silver{color:#66758a;background:#f0f3f7}
+.rank-bronze{color:#a55e2c;background:#faece0}
+.medal-icon{display:inline-block;width:22px;height:22px;flex:none;border-radius:50%;position:relative;border:2px solid currentColor;box-shadow:inset 0 0 0 2px rgba(255,255,255,.55)}
+.medal-icon::before{content:"★";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1}
+.rank-gold .medal-icon{background:linear-gradient(135deg,#ffe58a,#e3a716);color:#9a6900}
+.rank-silver .medal-icon{background:linear-gradient(135deg,#f8fbff,#aab5c3);color:#657487}
+.rank-bronze .medal-icon{background:linear-gradient(135deg,#f4c59b,#bf7a44);color:#8e4d25}
+
+/* Sticky sidebar navigation on desktop, compact links on mobile */
+.site-layout{display:grid;grid-template-columns:190px minmax(0,1fr);gap:24px;align-items:start}
+.site-main{min-width:0}
+.side-navigation{position:sticky;top:16px;margin-top:18px;z-index:3}
+.side-navigation nav{display:flex;flex-direction:column;gap:3px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 5px 18px rgba(29,43,79,.05)}
+.side-navigation strong{font-size:12px;margin-bottom:7px}
+.side-navigation a{display:block;text-decoration:none;font-size:12px;color:#34445d;border-radius:7px;padding:8px 9px}
+.side-navigation a:hover,.side-navigation a:focus-visible{background:#edf0ff;color:#334ed8}
+#ranking,#amazon-picks,#gunpla,.gunpla-grade{scroll-margin-top:18px}
+@media(max-width:800px){.site-layout{display:block}.side-navigation{position:static;margin-top:10px}.side-navigation nav{flex-direction:row;flex-wrap:wrap;gap:4px;padding:8px}.side-navigation strong{width:100%}.side-navigation a{padding:6px 9px;font-size:11px}}
+
+/* Keep the first viewport focused on ranking products. */
+.site-information{margin-top:42px;border-top:1px solid var(--line);padding-top:18px}
+.site-information .notice{background:transparent;border:0;padding:0;color:var(--muted);font-size:11px;line-height:1.7}
+.site-information .notice strong{font-weight:600}
+.site-information .updated{display:block;text-align:right;margin:12px 0 0;font-size:10px;color:var(--muted)}
+.site-information+.policy-nav{margin-top:16px}
+
+/* Header controls, accordion drawer, and responsive live search */
+.header-inner{justify-content:flex-start;gap:14px;min-height:64px}
+.header-inner .brand{margin-right:auto}
+.header-icon{border:0;background:transparent;color:var(--ink);font-size:26px;cursor:pointer;min-width:44px;min-height:44px;border-radius:9px}
+.header-icon:hover{background:#edf0ff}
+.site-layout{display:block;position:relative}
+.site-main{width:100%}
+.side-navigation:not([hidden]){position:fixed;left:max(12px,calc((100vw - 1160px)/2));top:66px;width:min(290px,calc(100vw - 24px));max-height:calc(100dvh - 80px);overflow-y:auto;z-index:20;margin:0;box-shadow:0 12px 36px #19232e33;border-radius:14px}
+.side-navigation nav,.side-navigation:not([hidden]) nav{display:flex;flex-direction:column;align-items:stretch}
+.side-navigation details{border-top:1px solid var(--line);padding:4px 0}
+.side-navigation summary{cursor:pointer;padding:9px;font-weight:700;font-size:13px}
+.side-navigation details a{padding-left:24px}
+.search-panel{padding-top:12px;padding-bottom:12px;background:#fff;border-bottom:1px solid var(--line)}
+.search-panel label{display:block;font-size:12px;font-weight:700;margin-bottom:5px}
+.search-panel input{width:min(520px,75%);font:inherit;padding:10px;border:1px solid var(--line);border-radius:8px}
+.search-panel button{margin-left:8px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:8px}
+.search-panel p{font-size:12px;margin:4px 0 0}
+@media(max-width:800px){.side-navigation:not([hidden]){position:fixed;top:66px;left:12px}.side-navigation nav{flex-direction:column}.side-navigation details a{display:block}}
+
+/* Compact product cards: price and recommendation score share one row. */
+.price-score-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0 4px}
+.price-score-row .price{min-width:0;font-size:clamp(23px,3vw,32px);line-height:1.15}
+.price-score-row .price span{display:block;letter-spacing:0;font-size:10px;line-height:1.6}
+.price-score-row .metrics{flex:none;display:block;margin:0;padding:0;border:0;text-align:right}
+.price-score-row .metrics>div{display:block;margin:0;padding:0}
+.price-score-row .metrics dt{font-size:11px;margin:0 0 2px}
+.price-score-row .metrics dd{font-size:clamp(23px,3vw,31px);line-height:1.15;margin:0;font-weight:800}
+.price-score-row .score-high{font-size:9px;margin-left:3px;padding:2px 4px}
+.recommendation-details{margin:9px 0;border-top:1px solid #edf0f5;padding-top:8px}
+.recommendation-details summary{cursor:pointer;font-size:12px;font-weight:700;color:#40577a;min-height:28px}
+.recommendation-details .history-note{margin:7px 0 0}
+@media(max-width:600px){.price-score-row{gap:6px}.price-score-row .price{font-size:clamp(21px,6vw,29px)}.price-score-row .metrics dd{font-size:clamp(21px,6vw,29px)}.product .store{margin-top:10px}.product-image{height:175px;margin:10px 0 6px}.product article{padding:14px}}
+
+/* Thumb-friendly fixed jump control, clear of mobile safe-area. */
+.next-product-button:not([hidden]){position:fixed;right:max(14px,env(safe-area-inset-right));bottom:calc(18px + env(safe-area-inset-bottom));z-index:30;display:flex;align-items:center;gap:8px;border:0;border-radius:999px;background:#253b75;color:#fff;padding:12px 18px;min-height:58px;box-shadow:0 7px 24px #182b5366;font:inherit;font-weight:800;font-size:13px;cursor:pointer}
+.next-product-button span:first-child{font-size:29px;line-height:1}
+.next-product-button:focus-visible{outline:3px solid #f4bc56;outline-offset:3px}
+.product{scroll-margin-top:16px}
+@media(max-width:600px){.next-product-button:not([hidden]){right:12px;bottom:calc(12px + env(safe-area-inset-bottom));padding:10px 15px;min-height:58px}}
