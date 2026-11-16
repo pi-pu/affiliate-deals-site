@@ -205,4 +205,99 @@ select{border-radius:10px}
 .score-track{height:8px;margin-top:8px;border-radius:99px;background:#e3ebf1;overflow:hidden}
 .score-track>span{display:block;height:100%;border-radius:99px;background:var(--part-color)}
 @media(prefers-reduced-motion:reduce){.score-breakdown>summary,.score-chevron{transition:none}}
+
+/* Self-contained gacha illustration assets: CSS-drawn machine, capsules and reveal. */
+.treasure-gacha{margin:28px 0 36px;padding:clamp(18px,3vw,36px);border-radius:24px;background:linear-gradient(145deg,#0b2350,#173f82 62%,#33246d);color:#fff;box-shadow:0 16px 40px #152b4b28;overflow:hidden}
+.gacha-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.gacha-heading h2{font-size:clamp(24px,4vw,38px);margin:0;color:#fff}
+.gacha-heading p{margin:4px 0;color:#e5eeff}
+.gacha-eyebrow{font-size:12px;letter-spacing:.16em;font-weight:800;color:#ffc86b!important}
+.gacha-play-tag{border:1px solid #ffffff70;border-radius:30px;padding:5px 14px;font-size:12px}
+.gacha-stage{display:grid;grid-template-columns:minmax(150px,270px) 1fr;align-items:center;gap:clamp(18px,4vw,55px);min-height:330px}
+.gacha-machine{width:clamp(150px,23vw,235px);height:295px;position:relative;margin:16px auto 0;filter:drop-shadow(0 14px 12px #0005)}
+.gacha-globe{position:absolute;top:4px;left:10%;width:80%;aspect-ratio:1;border:7px solid #ecf4ffb5;border-radius:50% 50% 44% 44%;background:radial-gradient(circle at 25% 20%,#ffffffbb,transparent 28%),linear-gradient(130deg,#a8d7ff8c,#d8c4ff47 55%,#fff3);box-shadow:inset -15px -12px 20px #0c2c6680;overflow:hidden}
+.gacha-globe i{position:absolute;width:27%;aspect-ratio:1;border-radius:50%;background:linear-gradient(145deg,#fff8b6,#f1a827 65%,#d88112);box-shadow:inset 4px 5px 7px #fff8,2px 3px 5px #1116}
+.gacha-globe i:nth-child(1){left:13%;top:45%;background:linear-gradient(145deg,#fff,#b9c7da 60%,#687d9b)}
+.gacha-globe i:nth-child(2){left:41%;top:18%}
+.gacha-globe i:nth-child(3){left:60%;top:49%;background:linear-gradient(135deg,#8effe4,#a2a4ff,#ff84d2)}
+.gacha-globe i:nth-child(4){left:35%;top:62%;background:linear-gradient(145deg,#fff,#b9c7da 60%,#687d9b)}
+.gacha-globe i:nth-child(5){left:68%;top:28%}
+.gacha-globe i:nth-child(6){left:9%;top:19%;background:linear-gradient(135deg,#8effe4,#a2a4ff,#ff84d2)}
+.gacha-body{position:absolute;top:58%;left:6%;width:88%;height:36%;border:5px solid #ff6a6c;border-radius:20px 20px 10px 10px;background:linear-gradient(110deg,#ff454e,#bf142e 75%);box-shadow:inset -10px 0 13px #75061a88}
+.gacha-knob{position:absolute;left:39%;top:12%;width:23%;aspect-ratio:1;border-radius:50%;background:linear-gradient(135deg,#fff,#b2bfcb);border:7px solid #e6edf7;box-shadow:0 3px 8px #0006}
+.gacha-knob:after{content:"";position:absolute;top:44%;left:0;width:100%;height:5px;background:#697d96;border-radius:5px}
+.gacha-slot{position:absolute;bottom:10%;left:35%;width:30%;height:17%;border-radius:4px;background:#681021;border:3px solid #ff9095}
+.gacha-base{position:absolute;bottom:0;left:0;width:100%;height:9%;background:linear-gradient(#ff6473,#9e0e2b);border-radius:12px}
+.gacha-console{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.gacha-tagline{font-weight:800;font-size:clamp(17px,2.4vw,24px);margin:0}
+.gacha-draw{background:linear-gradient(#ff7475,#e91c37 70%,#b60c27);color:white;border:2px solid #ffbbc1;border-radius:50px;padding:15px 36px;font-size:clamp(17px,2.6vw,26px);font-weight:900;cursor:pointer;box-shadow:0 6px 0 #850b25,0 10px 25px #0005}
+.gacha-draw:hover:not(:disabled){filter:brightness(1.13)}
+.gacha-draw:disabled{opacity:.65;cursor:not-allowed}
+.gacha-status{font-size:14px;margin:0;color:#e5eeff}
+.gacha-rarity{display:flex;flex-wrap:wrap;gap:9px;font-size:12px}
+.gacha-rarity span{background:#ffffff19;border:1px solid #ffffff44;padding:5px 10px;border-radius:20px}
+.gacha-reveal{position:relative;text-align:center;margin:0 auto 16px;max-width:660px;padding:12px}
+.gacha-capsule{width:120px;height:120px;margin:0 auto;position:relative;border-radius:50%;filter:drop-shadow(0 8px 18px #0008);animation:gacha-drop .7s ease-out both}
+.gacha-capsule-top,.gacha-capsule-bottom{position:absolute;left:0;width:100%;height:52%;border:4px solid #ffffffb5}
+.gacha-capsule-top{top:0;border-radius:120px 120px 12px 12px;background:linear-gradient(135deg,#fff9,#a9b8d9)}
+.gacha-capsule-bottom{bottom:0;border-radius:12px 12px 120px 120px;background:linear-gradient(135deg,#eef4ff,#8697b5)}
+.gacha-capsule.gold .gacha-capsule-top,.gacha-capsule.gold .gacha-capsule-bottom{background:linear-gradient(125deg,#fff5ae,#e8a520 65%,#9f5b03)}
+.gacha-capsule.rainbow .gacha-capsule-top,.gacha-capsule.rainbow .gacha-capsule-bottom{background:linear-gradient(125deg,#ff84bd,#f5ff7d,#8df0f8,#ae8dff)}
+.gacha-spinning .gacha-globe i{animation:gacha-shake .22s ease-in-out infinite alternate}
+.gacha-spinning .gacha-knob{animation:gacha-turn .35s linear infinite}
+.gacha-finished .gacha-capsule-top{transform:translate(-35px,-30px) rotate(-30deg);transition:transform .45s}
+.gacha-finished .gacha-capsule-bottom{transform:translate(35px,18px) rotate(24deg);transition:transform .45s}
+.gacha-result{position:relative;margin:-30px auto 0;padding:24px;max-width:540px;background:#fff;color:#142a43;border-radius:20px;box-shadow:0 12px 35px #0005;animation:gacha-appear .45s ease-out both}
+.gacha-result h3{margin:8px 0;font-size:20px;line-height:1.5;overflow-wrap:anywhere}
+.gacha-result-rarity{font-size:20px;font-weight:900;margin:0}
+.gacha-result-rarity.rainbow{background:linear-gradient(90deg,#c21c7d,#4165d8,#08a788,#c21c7d);background-clip:text;color:transparent}
+.gacha-result-rarity.gold{color:#b47400}.gacha-result-rarity.silver{color:#68778d}
+.gacha-result-shop{font-size:13px;color:#53677d}
+.gacha-result-saving{color:#d51936;font-size:21px;font-weight:900;margin:8px 0}
+.gacha-result-price{font-weight:700}
+.gacha-result-link{display:inline-block;background:#d71f38;color:#fff;text-decoration:none;border-radius:30px;padding:10px 22px;font-weight:800}
+.gacha-disclaimer{font-size:12px;color:#d6e4ff;margin:12px 0 0}
+@keyframes gacha-shake{to{transform:translate(5px,-5px) rotate(15deg)}}
+@keyframes gacha-turn{to{transform:rotate(360deg)}}
+@keyframes gacha-drop{from{opacity:0;transform:translateY(-95px) rotate(-90deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
+@keyframes gacha-appear{from{opacity:0;transform:translateY(25px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:600px){.gacha-stage{grid-template-columns:1fr;gap:0}.gacha-machine{height:265px}.gacha-console{align-items:center;text-align:center}.gacha-draw{width:100%;padding:13px}.gacha-result{padding:18px}}
+@media(prefers-reduced-motion:reduce){.gacha-machine *,.gacha-capsule,.gacha-result{animation:none!important;transition:none!important}}
+
+/* Omikuji illustration: original CSS assets, no external images or prize symbolism. */
+.treasure-gacha{background:linear-gradient(145deg,#163e36,#285f4e 62%,#775d35)}
+.gacha-eyebrow{color:#f6d88d!important}
+.gacha-draw{background:linear-gradient(#edbf65,#cb852d 70%,#9d5d21);border-color:#ffe7a4;box-shadow:0 6px 0 #704418,0 10px 25px #0005}
+.omikuji-box{height:280px;transform-origin:50% 85%}
+.omikuji-sticks{position:absolute;z-index:1;top:3px;left:31%;width:38%;height:80px;display:flex;justify-content:space-around;align-items:flex-end}
+.omikuji-sticks i{display:block;width:13px;height:68px;background:linear-gradient(90deg,#f4d7a1,#ad793e);border:2px solid #865126;border-radius:6px 6px 2px 2px;transform:rotate(-10deg)}
+.omikuji-sticks i:nth-child(2){height:78px;transform:rotate(3deg)}
+.omikuji-sticks i:nth-child(3){transform:rotate(12deg)}
+.omikuji-lid{position:absolute;z-index:3;top:59px;left:10%;width:80%;height:24px;border-radius:10px 10px 4px 4px;background:linear-gradient(#b95c43,#792e22);border:3px solid #e5ad6d;box-shadow:0 4px 8px #0004}
+.omikuji-body{position:absolute;z-index:2;top:70px;left:16%;width:68%;height:175px;border-radius:6px 6px 18px 18px;background:linear-gradient(90deg,#7e2e22,#b84d37 28%,#a6412c 75%,#682319);border:5px solid #e3a65b;display:flex;align-items:center;justify-content:center;box-shadow:inset -12px 0 15px #0003}
+.omikuji-label{display:block;text-align:center;line-height:1.55;background:#f6e4bd;color:#7c3026;border:3px double #a36539;padding:8px 17px;font-weight:900;font-size:24px;letter-spacing:.15em;writing-mode:vertical-rl}
+.omikuji-base{position:absolute;bottom:21px;left:10%;width:80%;height:22px;border-radius:4px;background:linear-gradient(#e6b16a,#9c5a2d)}
+.gacha-spinning .omikuji-box{animation:omikuji-shake .18s ease-in-out infinite alternate}
+.gacha-spinning .omikuji-sticks{animation:omikuji-sticks .3s ease-in-out infinite alternate}
+.omikuji-scroll{width:140px;height:105px;display:flex;align-items:center;justify-content:center;animation:omikuji-drop .7s ease-out both;filter:drop-shadow(0 8px 12px #0005)}
+.omikuji-paper{display:block;min-width:120px;padding:16px 28px;background:linear-gradient(90deg,#d6b88d,#fff7e1 18%,#fff8e6 80%,#d6b88d);border-left:8px solid #9d4a32;border-right:8px solid #9d4a32;color:#9a4032;font-size:24px;font-weight:900;letter-spacing:.18em;box-shadow:0 6px 12px #0004}
+.gacha-finished .omikuji-scroll{transform:none}
+.gacha-finished .omikuji-paper{transform:scaleX(1.45);transition:transform .5s ease-out}
+.gacha-result{background:#fff9ed;border:3px solid #e1bf7b}
+.gacha-result-rarity.rainbow{background:linear-gradient(90deg,#bd3b68,#9c5abf,#ad7d15,#bd3b68);background-clip:text}
+@keyframes omikuji-shake{from{transform:rotate(-7deg)}to{transform:rotate(7deg)}}
+@keyframes omikuji-sticks{to{transform:translateY(-12px)}}
+@keyframes omikuji-drop{from{opacity:0;transform:translateY(-80px) scale(.7)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.gacha-spinning .omikuji-box,.gacha-spinning .omikuji-sticks,.omikuji-scroll{animation:none!important}.gacha-finished .omikuji-paper{transition:none}}
+
+/* Review feedback: make verified savings the most visible part of the price block. */
+.sale-comparison{border-color:#f2b9bf;background:#fff5f5}
+.sale-comparison strong{color:#c81832;font-size:clamp(17px,1.9vw,21px);font-weight:900;line-height:1.4;letter-spacing:.01em}
+.score-explainer{font-size:12px;line-height:1.65;color:#4f6677;margin:0 0 12px}
+
+/* Compact, visible disclosures without repeating full policy on every ranking. */
+.page-disclosure{display:flex;align-items:center;flex-wrap:wrap;gap:7px 12px;margin:20px 0 14px;padding:9px 13px;background:#fff;border:1px solid #e1e6e0;border-radius:8px;color:#53645b;font-size:12px;line-height:1.6}
+.page-disclosure strong{display:inline-block;padding:2px 9px;background:#fff0e8;color:#9a4220;border-radius:5px;font-weight:800;white-space:nowrap}
+.footer-policy-links{display:flex;flex-wrap:wrap;gap:10px 20px;margin:0 0 20px;font-size:13px}
+.footer-policy-links a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
 \n/* Mobile-only preview */\n.container{max-width:520px}.products{grid-template-columns:1fr}.header-caption{display:none}\n

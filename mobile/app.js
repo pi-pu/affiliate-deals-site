@@ -85,4 +85,67 @@
  window.addEventListener("scroll",updateNextButton,{passive:true});
  window.addEventListener("resize",updateNextButton);
  updateNextButton();
+ // Homepage-only gacha: draw uniformly from verified discount offers.
+ const draw=document.getElementById("gacha-draw");
+ const source=document.getElementById("gacha-offers");
+ if(draw&&source){
+  let offers=[];
+  try{offers=JSON.parse(source.textContent||"[]");}catch(_){offers=[];}
+  const stage=document.getElementById("treasure-gacha");
+  const reveal=document.getElementById("gacha-reveal");
+  const capsule=document.getElementById("gacha-capsule");
+  const result=document.getElementById("gacha-result");
+  const status=document.getElementById("gacha-status");
+  const yen=new Intl.NumberFormat("ja-JP");
+  const rarityLabel={rainbow:"超大吉",gold:"大吉",silver:"中吉"};
+  const reduced=window.matchMedia("(prefers-reduced-motion: reduce)");
+  if(!offers.length){draw.disabled=true;}
+  let running=false;
+  draw.addEventListener("click",()=>{
+   if(running||!offers.length)return;
+   running=true;
+   draw.disabled=true;
+   const item=offers[Math.floor(Math.random()*offers.length)];
+   const rarity=item.rarity;
+   stage.classList.add("gacha-spinning");
+   stage.classList.remove("gacha-finished");
+   reveal.hidden=false;
+   result.hidden=true;
+   result.replaceChildren();
+   capsule.className="gacha-capsule "+rarity;
+   status.textContent="おみくじを引いています…";
+   const show=()=>{
+    stage.classList.remove("gacha-spinning");
+    stage.classList.add("gacha-finished");
+    const label=document.createElement("p");
+    label.className="gacha-result-rarity "+rarity;
+    label.textContent=rarityLabel[rarity]||"当たり";
+    const title=document.createElement("h3");
+    title.textContent=item.name;
+    const shop=document.createElement("p");
+    shop.className="gacha-result-shop";
+    shop.textContent=item.shop;
+    const saving=document.createElement("p");
+    saving.className="gacha-result-saving";
+    saving.textContent=item.discount+"%OFF・"+yen.format(item.saving)+"円お得";
+    const price=document.createElement("p");
+    price.className="gacha-result-price";
+    price.textContent="¥"+yen.format(item.price)+"（通常価格 ¥"+yen.format(item.normal)+"）";
+    const link=document.createElement("a");
+    link.className="gacha-result-link";
+    link.textContent="Yahoo!ショッピングで確認 ↗";
+    link.href=item.url;
+    link.target="_blank";
+    link.rel="noopener noreferrer";
+    result.append(label,title,shop,saving,price,link);
+    result.hidden=false;
+    status.textContent="今日のお宝商品が見つかりました！";
+    draw.disabled=false;
+    running=false;
+    draw.textContent="もう一度占う！";
+   };
+   if(reduced.matches){show();}else{window.setTimeout(show,1700);}
+  });
+ }
+
 })();
