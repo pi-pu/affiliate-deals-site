@@ -317,4 +317,44 @@ select{border-radius:10px}
 .ranking-section-heading .ranking-help{margin:0}
 .ranking-section-heading .ranking-help-text{left:auto;right:0}
 @media(max-width:600px){.ranking-section-heading .ranking-help-text{right:-8px}}
+
+/* Omikuji prize cards: make the whole result visibly match the draw rarity. */
+.gacha-result.rainbow{
+  background:linear-gradient(125deg,#ff9ecf 0%,#ffe28a 17%,#aff5ac 35%,#9beaf9 52%,#b5b7ff 71%,#efb7ff 87%,#ffacba 100%);
+  border:3px solid #fff6e8;
+  color:#183047;
+  box-shadow:0 0 0 3px #ffffffb8,0 13px 33px #5e558e55;
+}
+.gacha-result.gold{
+  background:linear-gradient(125deg,#fff6ce 0%,#ffe484 18%,#d99b21 39%,#fff6c1 58%,#e9b63b 76%,#fff1aa 100%);
+  border:3px solid #fff2a2;
+  color:#4b320a;
+  box-shadow:0 0 0 3px #bd8d2f7d,0 13px 33px #9e711255;
+}
+.gacha-result.rainbow .gacha-result-rarity{
+  color:#4e2376;
+  background:none;
+  -webkit-text-fill-color:currentColor;
+  text-shadow:0 1px 2px #ffffffc9;
+}
+.gacha-result.gold .gacha-result-rarity{
+  color:#704100;
+  text-shadow:0 1px 1px #fff4c5;
+}
+.gacha-result.rainbow .gacha-result-shop,
+.gacha-result.gold .gacha-result-shop{color:#384a50}
+.gacha-result.rainbow .gacha-result-saving,
+.gacha-result.gold .gacha-result-saving{color:#9e1c30}
+.gacha-result-picture{
+  display:flex;align-items:center;justify-content:center;
+  width:min(100%,250px);aspect-ratio:1 / 1;
+  margin:14px auto 16px;padding:12px;overflow:hidden;
+  background:#fff;border:1px solid #e5e9ec;border-radius:15px;
+  box-shadow:0 4px 15px #172c4033;
+}
+.gacha-result-image{display:block;width:100%;height:100%;object-fit:contain}
+.gacha-result-picture.image-fallback{font-size:13px;color:#64717b}
+@media(max-width:600px){
+  .gacha-result-picture{width:min(100%,205px);margin:12px auto 14px}
+}
 \n/* PC-only preview */\n.container{max-width:1160px}.products{grid-template-columns:repeat(3,minmax(0,1fr))}\n

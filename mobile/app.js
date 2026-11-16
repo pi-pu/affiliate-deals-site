@@ -123,6 +123,7 @@
    reveal.hidden=false;
    result.hidden=true;
    result.replaceChildren();
+   result.className="gacha-result "+rarity;
    capsule.className="gacha-capsule "+rarity;
    status.textContent="おみくじを引いています…";
    const show=()=>{
@@ -131,6 +132,22 @@
     const label=document.createElement("p");
     label.className="gacha-result-rarity "+rarity;
     label.textContent=rarityLabel[rarity]||"当たり";
+    const picture=document.createElement("div");
+    picture.className="gacha-result-picture";
+    if(item.image_url){
+     const photo=document.createElement("img");
+     photo.className="gacha-result-image";
+     photo.src=item.image_url;
+     photo.alt=item.name;
+     photo.loading="lazy";
+     photo.decoding="async";
+     photo.referrerPolicy="no-referrer";
+     photo.addEventListener("error",()=>{picture.textContent="画像なし";picture.classList.add("image-fallback");});
+     picture.appendChild(photo);
+    }else{
+     picture.textContent="画像なし";
+     picture.classList.add("image-fallback");
+    }
     const title=document.createElement("h3");
     title.textContent=item.name;
     const shop=document.createElement("p");
@@ -148,7 +165,7 @@
     link.href=item.url;
     link.target="_blank";
     link.rel="noopener noreferrer";
-    result.append(label,title,shop,saving,price,link);
+    result.append(label,picture,title,shop,saving,price,link);
     result.hidden=false;
     status.textContent="今日のお宝商品が見つかりました！";
     draw.disabled=false;
