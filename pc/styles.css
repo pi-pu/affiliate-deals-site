@@ -184,15 +184,25 @@ select{border-radius:10px}
 .sale-comparison small{flex-basis:100%;font-size:11px;line-height:1.5;opacity:.78}
 .sale-comparison s{opacity:.7}
 
-/* Compact, expandable explanation of the actual scoring components */
-.score-breakdown{margin:12px 0;border:1px solid var(--border,#d9e0e8);border-radius:12px;overflow:hidden;background:rgba(125,145,170,.045)}
-.score-breakdown>summary{cursor:pointer;padding:11px 13px;font-weight:700;font-size:.88rem;list-style-position:inside}
-.score-breakdown>summary:hover{background:rgba(125,145,170,.08)}
-.score-breakdown-body{padding:2px 14px 13px}
-.score-part{margin:11px 0}
-.score-part-label{display:flex;justify-content:space-between;gap:8px;font-size:.8rem;align-items:center}
-.score-part-label strong{white-space:nowrap;font-variant-numeric:tabular-nums}
-.score-track{height:7px;margin-top:6px;border-radius:99px;background:#dce4ec;overflow:hidden}
-.score-track>span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#227bc1,#42b3b1)}
-.score-breakdown-body>p{font-size:.74rem;line-height:1.65;opacity:.8;margin:11px 0 0}
+/* Refined score detail: quiet collapsed state, clear visual hierarchy when opened */
+.score-breakdown{margin:13px 0;border:1px solid #dbe5ed;border-radius:14px;overflow:hidden;background:linear-gradient(140deg,#fbfdff,#f3f8fb);box-shadow:0 2px 10px rgba(22,58,84,.035)}
+.score-breakdown>summary{display:flex;align-items:center;gap:9px;padding:12px 13px;cursor:pointer;list-style:none;font-size:.83rem;font-weight:750;color:#243d52;transition:background .2s}
+.score-breakdown>summary::-webkit-details-marker{display:none}
+.score-breakdown>summary:hover{background:#eaf4f9}
+.score-summary-icon{display:grid;place-items:center;width:27px;height:27px;border-radius:8px;background:#e0f0fa;color:#177bb0;font-size:1rem;flex-shrink:0}
+.score-summary-total{margin-left:auto;color:#176fa5;font-size:1.03rem;font-weight:800;font-variant-numeric:tabular-nums}
+.score-summary-total small{font-size:.67rem;font-weight:500;color:#7b8c9a}
+.score-chevron{width:8px;height:8px;border-right:2px solid #7b8c9a;border-bottom:2px solid #7b8c9a;transform:rotate(45deg);margin:0 4px 4px 3px;transition:transform .2s}
+.score-breakdown[open] .score-chevron{transform:rotate(225deg);margin-top:5px;margin-bottom:0}
+.score-breakdown-body{padding:1px 15px 15px;border-top:1px solid #e5edf2}
+.score-part{margin-top:14px}
+.score-part-label{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.78rem;color:#34495a}
+.score-part-name{display:inline-flex;align-items:center;gap:8px;font-weight:650}
+.score-part-name i{display:inline-block;width:8px;height:8px;border-radius:3px;background:var(--part-color)}
+.score-part-label strong{font-size:.9rem;font-weight:800;color:#233e53;font-variant-numeric:tabular-nums;white-space:nowrap}
+.score-part-label strong small{font-size:.71rem;font-weight:500;color:#8394a2}
+.score-part-base{--part-color:#2a86bd}.score-part-review{--part-color:#16a391}.score-part-sale{--part-color:#e8a44c}
+.score-track{height:8px;margin-top:8px;border-radius:99px;background:#e3ebf1;overflow:hidden}
+.score-track>span{display:block;height:100%;border-radius:99px;background:var(--part-color)}
+@media(prefers-reduced-motion:reduce){.score-breakdown>summary,.score-chevron{transition:none}}
 \n/* PC-only preview */\n.container{max-width:1160px}.products{grid-template-columns:repeat(3,minmax(0,1fr))}\n
