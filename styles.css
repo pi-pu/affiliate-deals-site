@@ -300,3 +300,13 @@ select{border-radius:10px}
 .page-disclosure strong{display:inline-block;padding:2px 9px;background:#fff0e8;color:#9a4220;border-radius:5px;font-weight:800;white-space:nowrap}
 .footer-policy-links{display:flex;flex-wrap:wrap;gap:10px 20px;margin:0 0 20px;font-size:13px}
 .footer-policy-links a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+
+/* Small, accessible ranking criterion explanation: hover/focus or tap the ? */
+.ranking-help{position:relative;display:inline-flex;vertical-align:middle;margin:0 5px;z-index:3}
+.ranking-help>summary{list-style:none;display:grid;place-items:center;width:24px;height:24px;border:1px solid #c0cbd1;border-radius:50%;font-size:13px;font-weight:800;line-height:1;background:#f6f8f9;color:#506474;cursor:help}
+.ranking-help>summary::-webkit-details-marker{display:none}
+.ranking-help>summary:focus-visible{outline:3px solid #5595bb;outline-offset:2px}
+.ranking-help-text{display:none;position:absolute;z-index:20;top:calc(100% + 8px);left:0;width:min(315px,calc(100vw - 42px));padding:12px 14px;border:1px solid #cad7df;border-radius:11px;background:#fff;color:#344554;font-size:12px;line-height:1.65;box-shadow:0 8px 22px #18342b2b;font-weight:400;white-space:normal}
+.ranking-help[open] .ranking-help-text,.ranking-help:hover .ranking-help-text,.ranking-help:focus-within .ranking-help-text{display:block}
+.ranking-toolbar h2+.ranking-help{margin-left:8px}
+@media(hover:none){.ranking-help:hover:not([open]) .ranking-help-text{display:none}}

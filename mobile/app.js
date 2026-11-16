@@ -26,15 +26,26 @@
  if(cards.length&&document.getElementById("sort-control"))document.getElementById("sort-control").hidden=false;
  const norm=s=>(s||"").normalize("NFKC").toLocaleLowerCase("ja").trim();
  function render(){
-  const q=norm(search?.value),mode=select?.value||"score";
+  const q=norm(search?.value),mode=select?.value||"discount";
   const candidates=cards.filter(c=>(category==="all"||c.dataset.category===category)&&(!q||norm(c.textContent).includes(q)));
-  const ordered=(category==="all"?candidates.sort((a,b)=>Number(b.dataset.score)-Number(a.dataset.score)).slice(0,20):candidates).sort((a,b)=>{
-   const diff=Number(b.dataset.score)-Number(a.dataset.score);
-   if(mode==="discount")return (Number(b.dataset.discount||-1)-Number(a.dataset.discount||-1))||diff;
-   if(mode==="price-asc")return Number(a.dataset.price)-Number(b.dataset.price)||diff;
-   if(mode==="price-desc")return Number(b.dataset.price)-Number(a.dataset.price)||diff;
-   return diff;
-  });
+  const dealRank=(a,b)=>{
+   const da=a.dataset.discount===""?null:Number(a.dataset.discount);
+   const db=b.dataset.discount===""?null:Number(b.dataset.discount);
+   if(da!==null&&db===null)return -1;
+   if(da===null&&db!==null)return 1;
+   if(da!==null&&db!==null){
+    const byRate=db-da;
+    if(byRate)return byRate;
+    const savingsA=Number(a.dataset.saving||0),savingsB=Number(b.dataset.saving||0);
+    if(savingsA!==savingsB)return savingsB-savingsA;
+   }
+   return Number(a.dataset.price)-Number(b.dataset.price);
+  };
+  const ordered=candidates.sort((a,b)=>{
+   if(mode==="price-asc")return Number(a.dataset.price)-Number(b.dataset.price)||dealRank(a,b);
+   if(mode==="price-desc")return Number(b.dataset.price)-Number(a.dataset.price)||dealRank(a,b);
+   return dealRank(a,b);
+  }).slice(0,category==="all"?20:undefined);
   cards.forEach(c=>{c.hidden=true});
   ordered.forEach(c=>{c.hidden=false;list?.appendChild(c)});
   const visible=new Set(ordered);
