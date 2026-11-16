@@ -50,4 +50,11 @@ select{border-radius:10px}
 .product-link{min-height:48px;text-align:center}
 @media(max-width:600px){.product-image{height:210px}.product article{padding:18px}.category-tabs{margin-left:-4px;margin-right:-4px}.product h2{font-size:15px}}
 @media(prefers-reduced-motion:reduce){.product,.category-tab{transition:none}.product:hover,.category-tab:hover{transform:none}}
+
+/* Amazon cards use the same product-card layout as Yahoo cards */
+.amazon-product .amazon-price-unavailable{font-size:17px;letter-spacing:0;line-height:1.5}
+.amazon-product .amazon-price-unavailable span{font-size:11px}
+.amazon-product .fetched{margin-top:auto;padding-top:18px}
+.amazon-product .product-link{margin-top:0}
+.amazon-link{margin-top:10px;background:#283448}
 \n/* PC-only preview */\n.container{max-width:1160px}.products{grid-template-columns:repeat(3,minmax(0,1fr))}\n
