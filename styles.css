@@ -57,3 +57,6 @@ select{border-radius:10px}
 .amazon-product .fetched{margin-top:auto;padding-top:18px}
 .amazon-product .product-link{margin-top:0}
 .amazon-link{margin-top:10px;background:#283448}
+
+/* Gunpla grade sections */
+.gunpla-grade{margin-top:30px}.gunpla-grade h3{font-size:19px;margin:0 0 16px}.gunpla-grade .products{margin-bottom:10px}
