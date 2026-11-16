@@ -60,4 +60,15 @@ select{border-radius:10px}
 
 /* Gunpla grade sections */
 .gunpla-grade{margin-top:30px}.gunpla-grade h3{font-size:19px;margin:0 0 16px}.gunpla-grade .products{margin-bottom:10px}
+
+/* Top-three ranking medals and separate high-score marker */
+.rank-number{display:inline-flex;align-items:center;gap:6px}
+.rank-number small{font-size:10px;font-weight:700;letter-spacing:0}
+.rank-gold,.rank-silver,.rank-bronze{font-size:18px;border-radius:999px;padding:6px 10px;line-height:1.3}
+.rank-gold{background:#fff2c7;color:#946400}
+.rank-silver{background:#edf0f5;color:#526176}
+.rank-bronze{background:#f7e5d5;color:#95582b}
+.score-high{display:inline-block;margin-left:7px;padding:2px 7px;border-radius:999px;background:#fff2c7;color:#8b6100;font-size:10px;vertical-align:middle}
+.product .price{font-variant-numeric:tabular-nums}
+.product .badge.discount{color:#b63e22}
 \n/* Mobile-only preview */\n.container{max-width:520px}.products{grid-template-columns:1fr}.header-caption{display:none}\n
