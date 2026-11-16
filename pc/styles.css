@@ -183,4 +183,16 @@ select{border-radius:10px}
 .sale-comparison strong{font-size:15px;font-weight:700}
 .sale-comparison small{flex-basis:100%;font-size:11px;line-height:1.5;opacity:.78}
 .sale-comparison s{opacity:.7}
+
+/* Compact, expandable explanation of the actual scoring components */
+.score-breakdown{margin:12px 0;border:1px solid var(--border,#d9e0e8);border-radius:12px;overflow:hidden;background:rgba(125,145,170,.045)}
+.score-breakdown>summary{cursor:pointer;padding:11px 13px;font-weight:700;font-size:.88rem;list-style-position:inside}
+.score-breakdown>summary:hover{background:rgba(125,145,170,.08)}
+.score-breakdown-body{padding:2px 14px 13px}
+.score-part{margin:11px 0}
+.score-part-label{display:flex;justify-content:space-between;gap:8px;font-size:.8rem;align-items:center}
+.score-part-label strong{white-space:nowrap;font-variant-numeric:tabular-nums}
+.score-track{height:7px;margin-top:6px;border-radius:99px;background:#dce4ec;overflow:hidden}
+.score-track>span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#227bc1,#42b3b1)}
+.score-breakdown-body>p{font-size:.74rem;line-height:1.65;opacity:.8;margin:11px 0 0}
 \n/* PC-only preview */\n.container{max-width:1160px}.products{grid-template-columns:repeat(3,minmax(0,1fr))}\n
