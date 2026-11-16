@@ -177,3 +177,9 @@ select{border-radius:10px}
 .featured-item>.products{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
 .featured-item>.products>.product{min-width:0;width:100%}
 @media(max-width:700px){.featured-products{grid-template-columns:minmax(0,1fr);gap:18px}}
+
+/* Explain verified Yahoo API sale prices without suggesting historical savings. */
+.sale-comparison{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin:9px 0;padding:10px 12px;border:1px solid var(--border,#d9dfe6);border-radius:9px;font-size:13px}
+.sale-comparison strong{font-size:15px;font-weight:700}
+.sale-comparison small{flex-basis:100%;font-size:11px;line-height:1.5;opacity:.78}
+.sale-comparison s{opacity:.7}
