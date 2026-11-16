@@ -28,7 +28,7 @@
  function render(){
   const q=norm(search?.value),mode=select?.value||"score";
   const candidates=cards.filter(c=>(category==="all"||c.dataset.category===category)&&(!q||norm(c.textContent).includes(q)));
-  const ordered=(category==="all"?candidates.sort((a,b)=>Number(b.dataset.score)-Number(a.dataset.score)).slice(0,10):candidates).sort((a,b)=>{
+  const ordered=(category==="all"?candidates.sort((a,b)=>Number(b.dataset.score)-Number(a.dataset.score)).slice(0,20):candidates).sort((a,b)=>{
    const diff=Number(b.dataset.score)-Number(a.dataset.score);
    if(mode==="discount")return (Number(b.dataset.discount||-1)-Number(a.dataset.discount||-1))||diff;
    if(mode==="price-asc")return Number(a.dataset.price)-Number(b.dataset.price)||diff;
