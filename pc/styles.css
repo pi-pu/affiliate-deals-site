@@ -310,4 +310,11 @@ select{border-radius:10px}
 .ranking-help[open] .ranking-help-text,.ranking-help:hover .ranking-help-text,.ranking-help:focus-within .ranking-help-text{display:block}
 .ranking-toolbar h2+.ranking-help{margin-left:8px}
 @media(hover:none){.ranking-help:hover:not([open]) .ranking-help-text{display:none}}
+
+/* Align the criteria icon with every genre title and keep its popover within viewport. */
+.ranking-section-heading{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;margin-top:18px}
+.ranking-section-heading h2{margin:0}
+.ranking-section-heading .ranking-help{margin:0}
+.ranking-section-heading .ranking-help-text{left:auto;right:0}
+@media(max-width:600px){.ranking-section-heading .ranking-help-text{right:-8px}}
 \n/* PC-only preview */\n.container{max-width:1160px}.products{grid-template-columns:repeat(3,minmax(0,1fr))}\n

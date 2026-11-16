@@ -96,7 +96,7 @@
  window.addEventListener("scroll",updateNextButton,{passive:true});
  window.addEventListener("resize",updateNextButton);
  updateNextButton();
- // Homepage-only gacha: draw uniformly from verified discount offers.
+ // Genre-specific gacha: draw only from this page's verified discount offers.
  const draw=document.getElementById("gacha-draw");
  const source=document.getElementById("gacha-offers");
  if(draw&&source){
@@ -108,7 +108,7 @@
   const result=document.getElementById("gacha-result");
   const status=document.getElementById("gacha-status");
   const yen=new Intl.NumberFormat("ja-JP");
-  const rarityLabel={rainbow:"超大吉",gold:"大吉",silver:"中吉"};
+  const rarityLabel={rainbow:"超大吉",gold:"大吉",silver:"中吉",bronze:"小吉"};
   const reduced=window.matchMedia("(prefers-reduced-motion: reduce)");
   if(!offers.length){draw.disabled=true;}
   let running=false;
