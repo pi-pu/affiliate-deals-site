@@ -649,3 +649,62 @@ select{border-radius:10px}
   .genre-switcher .genre-child-row:not([hidden]){padding-top:7px;padding-bottom:1px}
   .genre-switcher .genre-child-row .genre-switch-tab{min-height:32px;padding:6px 9px}
 }
+
+/* Compact ranking header: title and help icon always share one line. */
+.ranking-section-heading{
+ display:flex;flex-wrap:nowrap;align-items:center;justify-content:flex-start;
+ gap:8px;min-width:0;margin:16px 0 10px;
+}
+.ranking-section-heading h2{
+ margin:0;min-width:0;max-width:calc(100% - 40px);
+ font-size:clamp(16px,4.1vw,29px);line-height:1.35;
+ letter-spacing:-.035em;white-space:nowrap;
+}
+.ranking-section-heading .ranking-help{
+ flex:0 0 28px;margin:0;align-self:center;
+}
+.ranking-section-heading .ranking-help>summary{
+ width:28px;height:28px;font-size:14px;
+}
+.ranking-section-heading .ranking-help-text{left:auto;right:0}
+#genre-ranking .ranking-filter,#ranking .ranking-filter{
+ margin:8px 0 13px;padding:8px 10px;flex-wrap:nowrap;
+}
+#genre-ranking .ranking-filter .sr-only,#ranking .ranking-filter .sr-only{
+ position:absolute;width:1px;height:1px;overflow:hidden;
+ clip:rect(0,0,0,0);white-space:nowrap;
+}
+#genre-ranking .ranking-filter input,#ranking .ranking-filter input{
+ min-width:0;width:100%;flex:1;font-size:16px;
+}
+#genre-ranking .ranking-filter button,#ranking .ranking-filter button{flex:none}
+@media(max-width:600px){
+ .ranking-section-heading{gap:6px;margin:12px 0 8px}
+ .ranking-section-heading h2{font-size:clamp(14px,4.25vw,20px);letter-spacing:-.045em}
+ .ranking-section-heading .ranking-help{flex-basis:26px}
+ .ranking-section-heading .ranking-help>summary{width:26px;height:26px}
+ .ranking-section-heading .ranking-help-text{right:0}
+ #genre-ranking .ranking-filter,#ranking .ranking-filter{padding:7px 9px}
+}
+
+/* Make the header lottery discoverable without taking over the viewport. */
+.header-inner .header-gacha{
+ display:inline-flex;align-items:center;justify-content:center;gap:5px;
+ width:auto;min-width:0;height:42px;min-height:42px;
+ padding:0 11px;border:1px solid #a8cbb5;border-radius:11px;
+ background:#eaf4ec;color:#17583d;font-size:13px;font-weight:800;
+ white-space:nowrap;box-shadow:0 1px 3px rgba(20,60,40,.08);
+}
+.header-inner .header-gacha .gacha-button-icon{font-size:19px;line-height:1}
+.header-inner .header-gacha .gacha-button-label{font-size:12px;line-height:1.2}
+.header-inner .header-gacha:hover,.header-inner .header-gacha[aria-expanded="true"]{
+ background:#d8ebdd;border-color:#70ad88;
+}
+@media(max-width:600px){
+ .header-inner .header-gacha{
+  width:auto;min-width:0;height:40px;min-height:40px;
+  padding:0 8px;gap:3px;border-radius:10px;
+ }
+ .header-inner .header-gacha .gacha-button-icon{font-size:17px}
+ .header-inner .header-gacha .gacha-button-label{font-size:11px}
+}
