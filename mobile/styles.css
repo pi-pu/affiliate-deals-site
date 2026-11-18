@@ -357,4 +357,34 @@ select{border-radius:10px}
 @media(max-width:600px){
   .gacha-result-picture{width:min(100%,205px);margin:12px auto 14px}
 }
+
+/* The omikuji prize lives in the browser top layer; no page scroll is needed. */
+.gacha-dialog{
+  width:min(94vw,600px);
+  max-height:min(90dvh,900px);
+  margin:auto;
+  padding:14px clamp(12px,3vw,24px) 24px;
+  border:2px solid #e9cb83;
+  border-radius:22px;
+  background:#fff8e7;
+  color:#213647;
+  box-shadow:0 25px 80px #08182599;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+}
+.gacha-dialog::backdrop{background:rgba(8,18,36,.77);backdrop-filter:blur(4px)}
+.gacha-dialog-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.gacha-dialog-top h2{font-size:clamp(17px,3vw,23px);margin:2px 0;color:#514020}
+.gacha-close{flex-shrink:0;min-width:88px;min-height:44px;padding:7px 12px;border:1px solid #ad8b4e;border-radius:12px;background:#fff;color:#4a3820;font-weight:800;cursor:pointer}
+.gacha-close:focus-visible{outline:3px solid #285c91;outline-offset:3px}
+.gacha-dialog .gacha-reveal{padding:6px 0 0;margin:0 auto}
+.gacha-dialog .gacha-result{margin:0 auto;max-width:100%;animation:none}
+.gacha-dialog .omikuji-scroll{height:74px}
+.gacha-dialog .gacha-result-picture{width:min(100%,220px);margin:10px auto}
+@media(max-width:600px){
+  .gacha-dialog{width:calc(100% - 18px);max-height:calc(100dvh - 22px);padding:12px}
+  .gacha-dialog .gacha-result{padding:15px}
+  .gacha-dialog .gacha-result-picture{width:min(100%,170px)}
+}
+@media(prefers-reduced-motion:reduce){.gacha-dialog::backdrop{backdrop-filter:none}}
 \n/* Mobile-only preview */\n.container{max-width:520px}.products{grid-template-columns:1fr}.header-caption{display:none}\n

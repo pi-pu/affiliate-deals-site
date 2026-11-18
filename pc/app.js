@@ -103,6 +103,8 @@
   let offers=[];
   try{offers=JSON.parse(source.textContent||"[]");}catch(_){offers=[];}
   const stage=document.getElementById("treasure-gacha");
+  const dialog=document.getElementById("gacha-dialog");
+  const closeButton=document.getElementById("gacha-close");
   const reveal=document.getElementById("gacha-reveal");
   const capsule=document.getElementById("gacha-capsule");
   const result=document.getElementById("gacha-result");
@@ -111,6 +113,9 @@
   const rarityLabel={rainbow:"超大吉",gold:"大吉",silver:"中吉",bronze:"小吉"};
   const reduced=window.matchMedia("(prefers-reduced-motion: reduce)");
   if(!offers.length){draw.disabled=true;}
+  closeButton?.addEventListener("click",()=>dialog.close());
+  dialog?.addEventListener("click",event=>{if(event.target===dialog)dialog.close();});
+  dialog?.addEventListener("close",()=>{draw.focus({preventScroll:true});});
   let running=false;
   draw.addEventListener("click",()=>{
    if(running||!offers.length)return;
@@ -167,9 +172,10 @@
     link.rel="noopener noreferrer";
     result.append(label,picture,title,shop,saving,price,link);
     result.hidden=false;
-    // Bring the revealed result into view only after the draw animation ends.
-    // Respect reduced-motion preferences and keep the result below the sticky header.
-    result.scrollIntoView({behavior:reduced.matches?"instant":"smooth",block:"start"});
+    // A native modal places the result in the viewport without moving the page.
+    // Escape, the close button and backdrop click all dismiss the result.
+    dialog.showModal();
+    closeButton.focus({preventScroll:true});
     status.textContent="今日のお宝商品が見つかりました！";
     draw.disabled=false;
     running=false;
