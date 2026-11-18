@@ -24,6 +24,7 @@
  document.querySelectorAll(".genre-group-button").forEach(button=>{
   button.addEventListener("click",()=>{
    const group=button.dataset.group;
+   showCurrentGroup(button);
    document.querySelectorAll(".genre-group-button").forEach(tab=>{
     const active=tab===button;
     tab.classList.toggle("is-current",active);
@@ -34,6 +35,15 @@
    });
   });
  });
+ // Keep the selected parent category visible in the one-row scroller,
+ // including when opening a deep-linked page such as kids fashion.
+ const genreStrip=document.querySelector(".genre-group-buttons");
+ const showCurrentGroup=button=>{
+  if(!genreStrip||!button)return;
+  const preferred=button.offsetLeft-genreStrip.offsetLeft-(genreStrip.clientWidth-button.offsetWidth)/2;
+  genreStrip.scrollLeft=Math.max(0,preferred);
+ };
+ showCurrentGroup(document.querySelector(".genre-group-button.is-current"));
  const list=document.getElementById("products"),select=document.getElementById("sort-order");
 
  const cards=Array.from(list?.children||[]),tabs=Array.from(document.querySelectorAll(".category-tab"));
