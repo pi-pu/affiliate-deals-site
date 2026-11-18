@@ -25,6 +25,35 @@
  let category="all";
  if(cards.length&&document.getElementById("sort-control"))document.getElementById("sort-control").hidden=false;
  const norm=s=>(s||"").normalize("NFKC").toLocaleLowerCase("ja").trim();
+ // Only the first 20 matching products are visible at first. Each tap adds 20,
+ // with a hard cap of 100 per ranking list, without network requests.
+ const pageSize=20, pageMax=100, pagination=new Map();
+ function paginate(reset=false){
+  document.querySelectorAll("#genre-ranking ol.products, #gunpla-products, #products").forEach(listEl=>{
+   const eligible=Array.from(listEl.querySelectorAll(":scope > .product")).filter(el=>reset?!el.hidden:el.dataset.pageEligible==="1").slice(0,pageMax);
+   if(reset)Array.from(listEl.querySelectorAll(":scope > .product")).forEach(el=>{el.dataset.pageEligible=String(!el.hidden?"1":"0");});
+   let state=pagination.get(listEl);
+   if(!state){
+    const button=document.createElement("button");
+    button.type="button";
+    button.className="ranking-load-more";
+    button.addEventListener("click",()=>{state.shown=Math.min(pageMax,state.shown+pageSize);paginate(false);updateNextButton();});
+    listEl.insertAdjacentElement("afterend",button);
+    state={shown:pageSize,button};
+    pagination.set(listEl,state);
+   }
+   if(reset)state.shown=pageSize;
+   Array.from(listEl.querySelectorAll(":scope > .product")).forEach(el=>{
+    const index=eligible.indexOf(el);
+    el.hidden=index<0||index>=state.shown;
+   });
+   const visible=Math.min(state.shown,eligible.length);
+   state.button.hidden=visible>=eligible.length;
+   state.button.textContent=`さらに${Math.min(pageSize,eligible.length-visible)}件表示（${visible}/${eligible.length}件）`;
+   state.button.setAttribute("aria-label",`次の商品を表示。現在${visible}件、最大${eligible.length}件`);
+  });
+ }
+
  function render(){
   const q=norm(search?.value),mode=select?.value||"discount";
   const candidates=cards.filter(c=>(category==="all"||c.dataset.category===category)&&(!q||norm(c.textContent).includes(q)));
@@ -45,7 +74,7 @@
    if(mode==="price-asc")return Number(a.dataset.price)-Number(b.dataset.price)||dealRank(a,b);
    if(mode==="price-desc")return Number(b.dataset.price)-Number(a.dataset.price)||dealRank(a,b);
    return dealRank(a,b);
-  }).slice(0,category==="all"?20:undefined);
+  }).slice(0,pageMax);
   cards.forEach(c=>{c.hidden=true});
   ordered.forEach(c=>{c.hidden=false;list?.appendChild(c)});
   const visible=new Set(ordered);
@@ -65,6 +94,7 @@
 
   if(filterStatus)filterStatus.textContent=`${category==="all"?"すべてのジャンル":category}・${ordered.length}商品を表示中`;
   if(searchResults)searchResults.textContent=q?`検索結果：${total+gunplaVisible}件`:"";
+  paginate(true);
   if(status)status.textContent="表示を更新しました";
  }
  select?.addEventListener("change",()=>{render();updateNextButton()});

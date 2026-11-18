@@ -390,3 +390,8 @@ select{border-radius:10px}
 
 /* Make the mandatory Amazon Associates disclosure readable on all devices. */
 .amazon-associate-disclosure{display:block;margin:14px 0;padding:12px 14px;border:1px solid #d9e3da;border-radius:10px;background:#f4f7f2;color:#18342b;font-size:14px;line-height:1.7;font-weight:600}
+
+/* Incremental ranking reveal (20 cards per tap, up to 100). */
+.ranking-load-more:not([hidden]){display:block;margin:26px auto 42px;padding:13px 28px;min-height:48px;border:1px solid var(--green);border-radius:999px;background:var(--white);color:var(--green);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.ranking-load-more:hover{background:var(--soft)}
+.ranking-load-more:focus-visible{outline:3px solid #b58629;outline-offset:3px}
