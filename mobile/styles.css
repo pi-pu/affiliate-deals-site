@@ -395,4 +395,10 @@ select{border-radius:10px}
 .ranking-load-more:not([hidden]){display:block;margin:26px auto 42px;padding:13px 28px;min-height:48px;border:1px solid var(--green);border-radius:999px;background:var(--white);color:var(--green);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
 .ranking-load-more:hover{background:var(--soft)}
 .ranking-load-more:focus-visible{outline:3px solid #b58629;outline-offset:3px}
+
+/* Kit-price filters are distinct from ordinary Yahoo sale rankings. */
+.gunpla-mode{border:1px solid var(--line);border-radius:999px;background:white;padding:7px 14px;min-height:40px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
+.gunpla-mode.active{background:var(--green);border-color:var(--green);color:white}
+.gunpla-condition{display:block;color:var(--green);font-size:12px;font-weight:700}
+#gunpla-products .badge{white-space:normal;text-align:right}
 \n/* Mobile-only preview */\n.container{max-width:520px}.products{grid-template-columns:1fr}.header-caption{display:none}\n

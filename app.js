@@ -82,15 +82,20 @@
   allCards.filter(c=>!cards.includes(c)&&!c.closest("#gunpla-products")).forEach(c=>{const show=!q||norm(c.textContent).includes(q);c.hidden=!show;if(show)total++});
   const gunplaCards=Array.from(document.querySelectorAll("#gunpla-products .product"));
   const grade=document.querySelector(".gunpla-tab.active")?.dataset.grade||"all";
+  const gunplaMode=document.querySelector(".gunpla-mode.active")?.dataset.mode||"all";
   let gunplaVisible=0;
   gunplaCards.forEach(c=>{
    const matchesGrade=grade==="all"||c.dataset.category===grade+" ガンプラ";
-   const show=matchesGrade&&(!q||norm(c.textContent).includes(q));
+   const matchesMode=gunplaMode==="all"||
+    (gunplaMode==="dropped"&&c.dataset.gunplaDropped==="true")||
+    (gunplaMode==="under"&&c.dataset.gunplaTier==="under")||
+    (gunplaMode==="near"&&(c.dataset.gunplaTier==="under"||c.dataset.gunplaTier==="near"));
+   const show=matchesGrade&&matchesMode&&(!q||norm(c.textContent).includes(q));
    c.hidden=!show;
    if(show)gunplaVisible++;
   });
   const gunplaStatus=document.getElementById("gunpla-filter-status");
-  if(gunplaStatus)gunplaStatus.textContent=`${grade==="all"?"ガンプラ全体":grade}・${gunplaVisible}商品を表示中`;
+  if(gunplaStatus)gunplaStatus.textContent=`${grade==="all"?"ガンプラ全体":grade}・${gunplaVisible}商品が条件に一致` + (gunplaVisible===0?"（条件に一致する確認済み商品はありません）":"");
 
   if(filterStatus)filterStatus.textContent=`${category==="all"?"すべてのジャンル":category}・${ordered.length}商品を表示中`;
   if(searchResults)searchResults.textContent=q?`検索結果：${total+gunplaVisible}件`:"";
@@ -98,6 +103,10 @@
   if(status)status.textContent="表示を更新しました";
  }
  select?.addEventListener("change",()=>{render();updateNextButton()});
+ document.querySelectorAll(".gunpla-mode").forEach(tab=>tab.addEventListener("click",()=>{
+  document.querySelectorAll(".gunpla-mode").forEach(b=>{const active=b===tab;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active))});
+  render();updateNextButton();
+ }));
  document.querySelectorAll(".gunpla-tab").forEach(tab=>tab.addEventListener("click",()=>{
   document.querySelectorAll(".gunpla-tab").forEach(b=>{const active=b===tab;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active))});
   render();updateNextButton();
