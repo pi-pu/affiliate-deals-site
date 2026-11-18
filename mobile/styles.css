@@ -387,4 +387,7 @@ select{border-radius:10px}
   .gacha-dialog .gacha-result-picture{width:min(100%,170px)}
 }
 @media(prefers-reduced-motion:reduce){.gacha-dialog::backdrop{backdrop-filter:none}}
+
+/* Make the mandatory Amazon Associates disclosure readable on all devices. */
+.amazon-associate-disclosure{display:block;margin:14px 0;padding:12px 14px;border:1px solid #d9e3da;border-radius:10px;background:#f4f7f2;color:#18342b;font-size:14px;line-height:1.7;font-weight:600}
 \n/* Mobile-only preview */\n.container{max-width:520px}.products{grid-template-columns:1fr}.header-caption{display:none}\n
