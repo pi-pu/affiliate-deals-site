@@ -247,7 +247,7 @@ select{border-radius:10px}
 .gacha-spinning .gacha-knob{animation:gacha-turn .35s linear infinite}
 .gacha-finished .gacha-capsule-top{transform:translate(-35px,-30px) rotate(-30deg);transition:transform .45s}
 .gacha-finished .gacha-capsule-bottom{transform:translate(35px,18px) rotate(24deg);transition:transform .45s}
-.gacha-result{position:relative;margin:-30px auto 0;padding:24px;max-width:540px;background:#fff;color:#142a43;border-radius:20px;box-shadow:0 12px 35px #0005;animation:gacha-appear .45s ease-out both}
+.gacha-result{position:relative;margin:-30px auto 0;padding:24px;max-width:540px;background:#fff;color:#142a43;border-radius:20px;box-shadow:0 12px 35px #0005;animation:gacha-appear .45s ease-out both;scroll-margin-top:90px}
 .gacha-result h3{margin:8px 0;font-size:20px;line-height:1.5;overflow-wrap:anywhere}
 .gacha-result-rarity{font-size:20px;font-weight:900;margin:0}
 .gacha-result-rarity.rainbow{background:linear-gradient(90deg,#c21c7d,#4165d8,#08a788,#c21c7d);background-clip:text;color:transparent}

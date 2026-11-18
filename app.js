@@ -167,6 +167,9 @@
     link.rel="noopener noreferrer";
     result.append(label,picture,title,shop,saving,price,link);
     result.hidden=false;
+    // Bring the revealed result into view only after the draw animation ends.
+    // Respect reduced-motion preferences and keep the result below the sticky header.
+    result.scrollIntoView({behavior:reduced.matches?"instant":"smooth",block:"start"});
     status.textContent="今日のお宝商品が見つかりました！";
     draw.disabled=false;
     running=false;
