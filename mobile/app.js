@@ -168,6 +168,11 @@
     link.className="gacha-result-link";
     link.textContent="Yahoo!ショッピングで確認 ↗";
     link.href=item.url;
+    link.setAttribute("data-umami-event","product-click");
+    link.setAttribute("data-umami-event-store","yahoo");
+    link.setAttribute("data-umami-event-category",String(item.category||"").slice(0,80));
+    link.setAttribute("data-umami-event-product",String(item.name||"").slice(0,100));
+    link.setAttribute("data-umami-event-placement","omikuji");
     link.target="_blank";
     link.rel="noopener noreferrer";
     result.append(label,picture,title,shop,saving,price,link);
