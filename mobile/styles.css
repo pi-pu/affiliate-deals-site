@@ -401,4 +401,13 @@ select{border-radius:10px}
 .gunpla-mode.active{background:var(--green);border-color:var(--green);color:white}
 .gunpla-condition{display:block;color:var(--green);font-size:12px;font-weight:700}
 #gunpla-products .badge{white-space:normal;text-align:right}
+
+/* Keep dense Gunpla price labels from stretching the ranking grid. */
+#gunpla-products{align-items:stretch}
+#gunpla-products>.product{min-width:0;max-width:100%;overflow:hidden}
+#gunpla-products .card-top{align-items:flex-start;flex-wrap:wrap}
+#gunpla-products .card-top .rank-number{flex:none}
+#gunpla-products .card-top .badge{max-width:100%;overflow-wrap:anywhere;line-height:1.5;text-align:left;border-radius:9px}
+#gunpla-products .product h2{overflow-wrap:anywhere}
+#gunpla-products .product-image img{max-width:100%}
 \n/* Mobile-only preview */\n.container{max-width:520px}.products{grid-template-columns:1fr}.header-caption{display:none}\n
