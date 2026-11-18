@@ -13,10 +13,27 @@
  },{passive:true});
  const searchPanel=document.getElementById("site-search"),searchButton=document.getElementById("search-toggle");
  const search=document.getElementById("product-search"),clear=document.getElementById("search-clear");
- const searchResults=document.getElementById("search-results");
+ const searchResults=document.getElementById("search-results"),globalMatches=document.getElementById("global-search-matches");
+ const localMain=document.getElementById("ranking-filter-input"),localGenre=document.getElementById("genre-filter-input");
+ const localGunpla=document.getElementById("gunpla-filter-input"),localAmazon=document.getElementById("amazon-filter-input");
  menuButton?.addEventListener("click",()=>{menu.hidden=!menu.hidden;menuButton.setAttribute("aria-expanded",String(!menu.hidden));});
  menu?.querySelectorAll('a').forEach(a=>a.addEventListener("click",()=>{menu.hidden=true;menuButton.setAttribute("aria-expanded","false");}));
  searchButton?.addEventListener("click",()=>{searchPanel.hidden=!searchPanel.hidden;searchButton.setAttribute("aria-expanded",String(!searchPanel.hidden));if(!searchPanel.hidden)search.focus();});
+ document.getElementById("search-close")?.addEventListener("click",()=>{searchPanel.hidden=true;searchButton?.setAttribute("aria-expanded","false");searchButton?.focus();});
+ // Select a parent category without creating a long, sideways child-tab list.
+ document.querySelectorAll(".genre-group-button").forEach(button=>{
+  button.addEventListener("click",()=>{
+   const group=button.dataset.group;
+   document.querySelectorAll(".genre-group-button").forEach(tab=>{
+    const active=tab===button;
+    tab.classList.toggle("is-current",active);
+    tab.setAttribute("aria-expanded",String(active));
+   });
+   document.querySelectorAll(".genre-child-row").forEach(row=>{
+    row.hidden=row.dataset.genreChild!==group;
+   });
+  });
+ });
  const list=document.getElementById("products"),select=document.getElementById("sort-order");
 
  const cards=Array.from(list?.children||[]),tabs=Array.from(document.querySelectorAll(".category-tab"));
@@ -55,7 +72,7 @@
  }
 
  function render(){
-  const q=norm(search?.value),mode=select?.value||"discount";
+  const q=norm(localMain?.value),genreQ=norm(localGenre?.value),amazonQ=norm(localAmazon?.value),gunplaQ=norm(localGunpla?.value),mode=select?.value||"discount";
   const candidates=cards.filter(c=>(category==="all"||c.dataset.category===category)&&(!q||norm(c.textContent).includes(q)));
   const dealRank=(a,b)=>{
    const da=a.dataset.discount===""?null:Number(a.dataset.discount);
@@ -77,9 +94,17 @@
   }).slice(0,pageMax);
   cards.forEach(c=>{c.hidden=true});
   ordered.forEach(c=>{c.hidden=false;list?.appendChild(c)});
-  const visible=new Set(ordered);
-  let total=ordered.length;
-  allCards.filter(c=>!cards.includes(c)&&!c.closest("#gunpla-products")).forEach(c=>{const show=!q||norm(c.textContent).includes(q);c.hidden=!show;if(show)total++});
+  // Local filters are scoped: changing one ranking never hides other sections.
+  const genreCards=Array.from(document.querySelectorAll("#genre-ranking .product"));
+  let genreVisible=0;
+  genreCards.forEach(c=>{const show=!genreQ||norm(c.textContent).includes(genreQ);c.hidden=!show;if(show)genreVisible++});
+  const genreStatus=document.getElementById("genre-filter-status");
+  if(genreStatus)genreStatus.textContent=genreQ?`このランキング内で${genreVisible}件が一致`:"";
+  const amazonCards=Array.from(document.querySelectorAll("#amazon-picks .product"));
+  let amazonVisible=0;
+  amazonCards.forEach(c=>{const show=!amazonQ||norm(c.textContent).includes(amazonQ);c.hidden=!show;if(show)amazonVisible++});
+  const amazonStatus=document.getElementById("amazon-filter-status");
+  if(amazonStatus)amazonStatus.textContent=amazonQ?`Amazon商品${amazonVisible}件が一致`:"";
   const gunplaCards=Array.from(document.querySelectorAll("#gunpla-products .product"));
   const grade=document.querySelector(".gunpla-tab.active")?.dataset.grade||"all";
   const gunplaMode=document.querySelector(".gunpla-mode.active")?.dataset.mode||"all";
@@ -90,7 +115,7 @@
     (gunplaMode==="dropped"&&c.dataset.gunplaDropped==="true")||
     (gunplaMode==="under"&&c.dataset.gunplaTier==="under")||
     (gunplaMode==="near"&&(c.dataset.gunplaTier==="under"||c.dataset.gunplaTier==="near"));
-   const show=matchesGrade&&matchesMode&&(!q||norm(c.textContent).includes(q));
+   const show=matchesGrade&&matchesMode&&(!gunplaQ||norm(c.textContent).includes(gunplaQ));
    c.hidden=!show;
    if(show)gunplaVisible++;
   });
@@ -98,7 +123,6 @@
   if(gunplaStatus)gunplaStatus.textContent=`${grade==="all"?"ガンプラ全体":grade}・${gunplaVisible}商品が条件に一致` + (gunplaVisible===0?"（条件に一致する確認済み商品はありません）":"");
 
   if(filterStatus)filterStatus.textContent=`${category==="all"?"すべてのジャンル":category}・${ordered.length}商品を表示中`;
-  if(searchResults)searchResults.textContent=q?`検索結果：${total+gunplaVisible}件`:"";
   paginate(true);
   if(status)status.textContent="表示を更新しました";
  }
@@ -112,8 +136,66 @@
   render();updateNextButton();
  }));
  tabs.forEach(tab=>tab.addEventListener("click",()=>{category=tab.dataset.category;tabs.forEach(b=>{const active=b===tab;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active))});render();updateNextButton()}));
- search?.addEventListener("input",()=>{render();updateNextButton()});
- clear?.addEventListener("click",()=>{search.value="";render();updateNextButton();search.focus()});
+ [localMain,localGenre,localGunpla,localAmazon].forEach(input=>input?.addEventListener("input",()=>{render();updateNextButton()}));
+ document.querySelectorAll(".ranking-filter-clear").forEach(button=>button.addEventListener("click",()=>{
+  const input=document.getElementById(button.dataset.target);
+  if(!input)return;
+  input.value="";render();updateNextButton();input.focus();
+ }));
+ // A global search index is generated alongside all public ranking pages.
+ // It contains only product names and same-site category paths, not affiliate URLs.
+ const searchCategories=["PC・スマホ","暮らし","ゲーム","ガンプラ","トレカ","家電","ファッション","Amazon"];
+ let catalog=null;
+ let catalogError=false;
+ const safePath=path=>typeof path==="string"&&/^[a-z0-9-]+\.html$/.test(path);
+ const searchLink=(entry,label,q)=>{
+  const a=document.createElement("a");
+  a.className="global-search-result";
+  a.href="./"+entry.path+(q?"?q="+encodeURIComponent(q):"");
+  const title=document.createElement("strong");
+  title.textContent=label;
+  a.appendChild(title);
+  if(entry.category){const sub=document.createElement("small");sub.textContent=entry.category+(Number.isInteger(entry.price)?`・¥${entry.price.toLocaleString("ja-JP")}`:"");a.appendChild(sub);}
+  return a;
+ };
+ function globalRender(){
+  if(!globalMatches)return;
+  globalMatches.replaceChildren();
+  const q=norm(search?.value);
+  if(!q){searchResults.textContent="ジャンルや商品名を入力してください。";return;}
+  if(catalogError){searchResults.textContent="検索データを読み込めませんでした。時間をおいて再度お試しください。";return;}
+  if(!catalog){searchResults.textContent="検索データを読み込み中…";return;}
+  const tokens=q.split(/\s+/).filter(Boolean);
+  const matches=entry=>tokens.every(token=>norm((entry.name||"")+" "+(entry.category||"")).includes(token));
+  const genres=catalog.genres.filter(entry=>safePath(entry.path)&&matches(entry));
+  const products=catalog.products.filter(entry=>safePath(entry.path)&&matches(entry));
+  searchResults.textContent=`ジャンル ${genres.length}件・商品 ${products.length}件`+(products.length>30?"（商品は先頭30件を表示）":"");
+  if(!genres.length&&!products.length){const p=document.createElement("p");p.textContent="一致するジャンル・商品がありません。別のキーワードをお試しください。";globalMatches.appendChild(p);return;}
+  if(genres.length){
+   const h=document.createElement("h3");h.textContent="ジャンル";globalMatches.appendChild(h);
+   genres.forEach(entry=>globalMatches.appendChild(searchLink(entry,entry.name,"")));
+  }
+  if(products.length){
+   const h=document.createElement("h3");h.textContent="掲載商品";globalMatches.appendChild(h);
+   products.slice(0,30).forEach(entry=>globalMatches.appendChild(searchLink(entry,entry.name,search.value.trim())));
+  }
+ }
+ search?.addEventListener("input",globalRender);
+ clear?.addEventListener("click",()=>{search.value="";globalRender();search.focus()});
+ // Search within the same directory even from mobile/pc preview versions.
+ fetch("./search-index.json",{cache:"no-cache"}).then(response=>{
+  if(!response.ok)throw new Error("search index unavailable");
+  return response.json();
+ }).then(data=>{
+  if(!data||!Array.isArray(data.genres)||!Array.isArray(data.products))throw new Error("invalid search index");
+  catalog={genres:data.genres,products:data.products};globalRender();
+ }).catch(()=>{catalogError=true;globalRender()});
+ // Search result deep links open the proper page and prefill its local filter.
+ const initialFilter=new URLSearchParams(window.location.search).get("q");
+ if(initialFilter&&initialFilter.length<=120){
+  const target=localGunpla||localGenre||localAmazon||localMain;
+  if(target){target.value=initialFilter;window.requestAnimationFrame(()=>target.closest("section")?.scrollIntoView({block:"start"}));}
+ }
  render();
 
  // Jump to the next visible product in document order, across ranking sections.
