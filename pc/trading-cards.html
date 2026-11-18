@@ -14,7 +14,7 @@
 </head>
 <body>
   <a class="skip-link" href="#featured">注目商品へ移動</a>
-  <header class="site-header"><div class="container header-inner"><button type="button" id="menu-toggle" class="header-icon" aria-controls="site-menu" aria-expanded="false" aria-label="メニューを開く">☰</button><a class="brand" href="./">モノヨリ<span>MONOYORI</span></a><button type="button" id="search-toggle" class="header-icon" aria-controls="site-search" aria-expanded="false" aria-label="サイト全体から検索">⌕</button></div></header><div id="site-search" class="search-panel container" hidden><div class="global-search-head"><label for="product-search">サイト全体から探す</label><button type="button" id="search-close" aria-label="検索を閉じる">閉じる ×</button></div><div class="global-search-input"><input id="product-search" type="search" placeholder="ジャンル・商品名を入力（例：ガンプラ、マウス）" autocomplete="off"><button type="button" id="search-clear">クリア</button></div><p id="search-results" aria-live="polite">ジャンルや商品名を入力してください。</p><div id="global-search-matches" class="global-search-matches"></div></div>
+  <header class="site-header"><div class="container header-inner"><button type="button" id="menu-toggle" class="header-icon" aria-controls="site-menu" aria-expanded="false" aria-label="メニューを開く">☰</button><a class="brand" href="./">モノヨリ<span>MONOYORI</span></a><button type="button" id="search-toggle" class="header-icon" aria-controls="site-search" aria-expanded="false" aria-label="サイト全体から検索">⌕</button></div></header><div id="site-search" class="search-panel container" role="search" aria-label="サイト全体の商品検索" hidden><div class="global-search-head"><label for="product-search">サイト内を検索</label><button type="button" id="search-close" aria-label="検索を閉じる">✕ <span>閉じる</span></button></div><div class="global-search-input"><span class="global-search-icon" aria-hidden="true">⌕</span><input id="product-search" type="search" placeholder="商品名・ジャンルを検索" autocomplete="off" enterkeyhint="search"><button type="button" id="search-clear" aria-label="検索キーワードを消す">クリア</button></div><p id="search-results" aria-live="polite">商品名やジャンルを入力してください。</p><div id="global-search-matches" class="global-search-matches" aria-label="サイト内検索結果"></div></div>
   <div class="site-layout container"><aside id="site-menu" class="side-navigation" hidden aria-label="サイトメニュー"><nav><strong>ジャンルを選ぶ</strong><a href="./">トップページ</a><details><summary>デジタル</summary><a href="./pc-mobile.html">PC・スマホ</a><a href="./home-electronics.html">家電・デジタル</a></details><details><summary>暮らし・住まい</summary><a href="./daily-goods.html">日用品</a><a href="./kitchen.html">キッチン用品</a><a href="./storage.html">収納用品</a><a href="./furniture.html">家具</a><a href="./interior.html">インテリア・照明</a></details><details><summary>ゲーム・ホビー</summary><a href="./games-hobby.html">ゲーム・フィギュア</a><a href="./gunpla.html">ガンプラ</a><a href="./trading-cards.html">トレカ・コレクション</a></details><details><summary>アウトドア・スポーツ</summary><a href="./outdoor.html">アウトドア・キャンプ</a><a href="./sports.html">スポーツ用品</a><a href="./fitness.html">フィットネス</a><a href="./bicycle.html">自転車用品</a></details><details><summary>ファッション</summary><a href="./fashion.html">ファッション全体</a><a href="./mens-fashion.html">メンズファッション</a><a href="./womens-fashion.html">レディースファッション</a><a href="./kids-fashion.html">キッズファッション</a></details><details><summary>美容・健康</summary><a href="./beauty.html">美容・スキンケア</a><a href="./health.html">健康グッズ</a></details><details><summary>そのほか</summary><a href="./food.html">食品・飲料</a><a href="./pet.html">ペット用品</a><a href="./car.html">カー用品</a><a href="./diy.html">DIY・工具</a><a href="./stationery.html">文房具</a></details><a href="./info.html">お問い合わせ・サイト情報</a></nav></aside><main class="site-main"><nav class="genre-switcher" aria-label="商品カテゴリの切り替え"><p class="genre-switcher-label">ジャンルを選ぶ <small>大分類 → 小分類</small></p><div class="genre-group-buttons"><button type="button" class="genre-group-button" data-group="genre-0" aria-expanded="false">デジタル</button><button type="button" class="genre-group-button" data-group="genre-1" aria-expanded="false">暮らし・住まい</button><button type="button" class="genre-group-button is-current" data-group="genre-2" aria-expanded="true">ゲーム・ホビー</button><button type="button" class="genre-group-button" data-group="genre-3" aria-expanded="false">アウトドア・スポーツ</button><button type="button" class="genre-group-button" data-group="genre-4" aria-expanded="false">ファッション</button><button type="button" class="genre-group-button" data-group="genre-5" aria-expanded="false">美容・健康</button><button type="button" class="genre-group-button" data-group="genre-6" aria-expanded="false">そのほか</button></div><div class="genre-child-groups"><div class="genre-child-row" data-genre-child="genre-0" hidden><a class="genre-switch-tab" href="./pc-mobile.html">PC・スマホ</a><a class="genre-switch-tab" href="./home-electronics.html">家電・デジタル</a></div><div class="genre-child-row" data-genre-child="genre-1" hidden><a class="genre-switch-tab" href="./daily-goods.html">日用品</a><a class="genre-switch-tab" href="./kitchen.html">キッチン用品</a><a class="genre-switch-tab" href="./storage.html">収納用品</a><a class="genre-switch-tab" href="./furniture.html">家具</a><a class="genre-switch-tab" href="./interior.html">インテリア・照明</a></div><div class="genre-child-row" data-genre-child="genre-2"><a class="genre-switch-tab" href="./games-hobby.html">ゲーム・フィギュア</a><a class="genre-switch-tab" href="./gunpla.html">ガンプラ</a><a class="genre-switch-tab is-current" href="./trading-cards.html" aria-current="page">トレカ・コレクション</a></div><div class="genre-child-row" data-genre-child="genre-3" hidden><a class="genre-switch-tab" href="./outdoor.html">アウトドア・キャンプ</a><a class="genre-switch-tab" href="./sports.html">スポーツ用品</a><a class="genre-switch-tab" href="./fitness.html">フィットネス</a><a class="genre-switch-tab" href="./bicycle.html">自転車用品</a></div><div class="genre-child-row" data-genre-child="genre-4" hidden><a class="genre-switch-tab" href="./fashion.html">ファッション全体</a><a class="genre-switch-tab" href="./mens-fashion.html">メンズファッション</a><a class="genre-switch-tab" href="./womens-fashion.html">レディースファッション</a><a class="genre-switch-tab" href="./kids-fashion.html">キッズファッション</a></div><div class="genre-child-row" data-genre-child="genre-5" hidden><a class="genre-switch-tab" href="./beauty.html">美容・スキンケア</a><a class="genre-switch-tab" href="./health.html">健康グッズ</a></div><div class="genre-child-row" data-genre-child="genre-6" hidden><a class="genre-switch-tab" href="./food.html">食品・飲料</a><a class="genre-switch-tab" href="./pet.html">ペット用品</a><a class="genre-switch-tab" href="./car.html">カー用品</a><a class="genre-switch-tab" href="./diy.html">DIY・工具</a><a class="genre-switch-tab" href="./stationery.html">文房具</a></div></div></nav>
     <p class="page-disclosure"><strong>PRを含みます</strong><span>掲載価格は取得時点の情報です。最新の販売条件は購入先でご確認ください。</span></p>
     
@@ -29,7 +29,7 @@
 <p class="store">カウカウストア エプロン サポーター スケール</p><h2>カードファイル トレカケース トレーディングカード 400枚 収納 大容量 4ポケット カードゲームケース 爆買</h2>
 <div class="price-score-row"><div class="price">¥1,880<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥2,980</s></span><strong>¥1,100お得（36.91%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥2,980に対して現在¥1,880。¥1,100安く、36.91%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fcaucau-store%2Ftracase.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="カードファイル トレカケース トレーディングカード 400枚 収納 大容量 4ポケット カードゲームケース 爆買" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -39,7 +39,7 @@
 <p class="store">HAMIYAショップ</p><h2>フォトカードアルバム アルバム コレクトブック トレカファイル フォト 写真 カード プリクラ ケース ホルダー バインダー ルーズリーフ グッズ 収</h2>
 <div class="price-score-row"><div class="price">¥1,418<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥1,576</s></span><strong>¥158お得（10.03%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥1,576に対して現在¥1,418。¥158安く、10.03%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2F5000chanahana%2Fwfj-0901125.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="フォトカードアルバム アルバム コレクトブック トレカファイル フォト 写真 カード プリクラ ケース ホルダー バインダー ルーズリーフ グッズ 収" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -49,7 +49,7 @@
 <p class="store">HAMIYAショップ</p><h2>ルーズリーフバインダー 6穴 A5 ルーズリーフ カード トレカケース バインダー フォトアルバム DIY 手作り 手帳 ホルダー クリアカラー ラメ</h2>
 <div class="price-score-row"><div class="price">¥2,293<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥2,548</s></span><strong>¥255お得（10.01%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥2,548に対して現在¥2,293。¥255安く、10.01%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2F5000chanahana%2Fwfj-0901403.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="ルーズリーフバインダー 6穴 A5 ルーズリーフ カード トレカケース バインダー フォトアルバム DIY 手作り 手帳 ホルダー クリアカラー ラメ" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -59,7 +59,7 @@
 <p class="store">HAMIYAショップ</p><h2>バインダー ルーズリーフ用 リングファイル 手帳型 A6 6穴 ファスナー付き ラメ入り キラキラ ファイル ミニサイズ ミニバイン トレカケース 文</h2>
 <div class="price-score-row"><div class="price">¥2,131<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥2,368</s></span><strong>¥237お得（10.01%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥2,368に対して現在¥2,131。¥237安く、10.01%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2F5000chanahana%2Fwfj-0901924.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="バインダー ルーズリーフ用 リングファイル 手帳型 A6 6穴 ファスナー付き ラメ入り キラキラ ファイル ミニサイズ ミニバイン トレカケース 文" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -69,7 +69,7 @@
 <p class="store">HAMIYAショップ</p><h2>バインダー ミニ A7 6穴 ミニバインダー 文房具 クリア 透明 リング トレカ チェキ かわいい おしゃれ 推し活 ヲタ活 推しカラー 雑貨</h2>
 <div class="price-score-row"><div class="price">¥1,321<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥1,468</s></span><strong>¥147お得（10.01%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥1,468に対して現在¥1,321。¥147安く、10.01%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2F5000chanahana%2Fwfj-09014.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="バインダー ミニ A7 6穴 ミニバインダー 文房具 クリア 透明 リング トレカ チェキ かわいい おしゃれ 推し活 ヲタ活 推しカラー 雑貨" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -79,7 +79,7 @@
 <p class="store">HAMIYAショップ</p><h2>システム手帳 ミニバインダー 3穴 透明 クリア ラメ メモ帳 持ち運び 小さめ コンパクト オタ活 推し活 トレカ用 かわいい 学生 学校 仕事用</h2>
 <div class="price-score-row"><div class="price">¥1,602<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥1,780</s></span><strong>¥178お得（10%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥1,780に対して現在¥1,602。¥178安く、10%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2F5000chanahana%2Fwfj-0901457.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="システム手帳 ミニバインダー 3穴 透明 クリア ラメ メモ帳 持ち運び 小さめ コンパクト オタ活 推し活 トレカ用 かわいい 学生 学校 仕事用" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -89,7 +89,7 @@
 <p class="store">HAMIYAショップ</p><h2>アルバム ポケット式 フォトブック トレカケース コレクトブック フォトホルダー ポラロイド チェキ 写真入れ 64枚収納 可愛い 整理整頓 ファイル</h2>
 <div class="price-score-row"><div class="price">¥1,386<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥1,540</s></span><strong>¥154お得（10%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥1,540に対して現在¥1,386。¥154安く、10%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2F5000chanahana%2Fwfj-0901337.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="アルバム ポケット式 フォトブック トレカケース コレクトブック フォトホルダー ポラロイド チェキ 写真入れ 64枚収納 可愛い 整理整頓 ファイル" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -99,7 +99,7 @@
 <p class="store">HAMIYAショップ</p><h2>アルバム コレクトブック トレカケース ポケット式 ファイル 収納 コレクトケース チェキ 写真 フォト 推し活 オタ活 可愛い かわいい おしゃれ</h2>
 <div class="price-score-row"><div class="price">¥1,332<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥1,480</s></span><strong>¥148お得（10%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥1,480に対して現在¥1,332。¥148安く、10%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2F5000chanahana%2Fwfj-0901352.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="アルバム コレクトブック トレカケース ポケット式 ファイル 収納 コレクトケース チェキ 写真 フォト 推し活 オタ活 可愛い かわいい おしゃれ" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -109,7 +109,7 @@
 <p class="store">HAMIYAショップ</p><h2>フォトアルバム 写真 チェキ トレカ カード 108枚 収納 ポケット式 ケース 大容量 レザー調 フェイクレザー ベルト 保管 整理 お洒落 かわい</h2>
 <div class="price-score-row"><div class="price">¥1,224<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥1,360</s></span><strong>¥136お得（10%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥1,360に対して現在¥1,224。¥136安く、10%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2F5000chanahana%2Fwfj-0901891.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="フォトアルバム 写真 チェキ トレカ カード 108枚 収納 ポケット式 ケース 大容量 レザー調 フェイクレザー ベルト 保管 整理 お洒落 かわい" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -119,7 +119,7 @@
 <p class="store">トレーディングカード専門店マットスワロー</p><h2>ポケモンカード オリパ マットスワロー BOX 27回目 紫スリーブ 30thセレブレーション ポケカ 30万口突破 9/16発売</h2>
 <div class="price-score-row"><div class="price">¥72<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥80</s></span><strong>¥8お得（10%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥80に対して現在¥72。¥8安く、10%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fmattoswarrow2%2F39.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="ポケモンカード" data-umami-event-product="ポケモンカード オリパ マットスワロー BOX 27回目 紫スリーブ 30thセレブレーション ポケカ 30万口突破 9/16発売" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -129,7 +129,7 @@
 <p class="store">HAMIYAショップ</p><h2>カードファイル トレカファイル 900枚収納可能 両面収納 ファスナー開閉 ハンドストラップ付き 大容量 9ポケット 50ページ トレカケース カード</h2>
 <div class="price-score-row"><div class="price">¥3,011<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥3,345</s></span><strong>¥334お得（9.99%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥3,345に対して現在¥3,011。¥334安く、9.99%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2F5000chanahana%2Fryp-0722793.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="カードファイル トレカファイル 900枚収納可能 両面収納 ファスナー開閉 ハンドストラップ付き 大容量 9ポケット 50ページ トレカケース カード" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -139,7 +139,7 @@
 <p class="store">HAMIYAショップ</p><h2>トレカファイル トレカケース アルバム コレクトブック トレカ ファイル ケース 韓国 ミニ 可愛い ラメ入り  バインダー A5 コレクトブ</h2>
 <div class="price-score-row"><div class="price">¥2,028<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥2,253</s></span><strong>¥225お得（9.99%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥2,253に対して現在¥2,028。¥225安く、9.99%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2F5000chanahana%2Fryp-0722946.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="トレカファイル トレカケース アルバム コレクトブック トレカ ファイル ケース 韓国 ミニ 可愛い ラメ入り  バインダー A5 コレクトブ" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -149,7 +149,7 @@
 <p class="store">HAMIYAショップ</p><h2>ルーズリーフバインダー 6穴 A6 ルーズリーフ カード トレカケース バインダー フォトアルバム DIY 手作り 手帳 ホルダー クリアカラー ラメ</h2>
 <div class="price-score-row"><div class="price">¥1,991<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥2,212</s></span><strong>¥221お得（9.99%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥2,212に対して現在¥1,991。¥221安く、9.99%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2F5000chanahana%2Fwfj-090154.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="ルーズリーフバインダー 6穴 A6 ルーズリーフ カード トレカケース バインダー フォトアルバム DIY 手作り 手帳 ホルダー クリアカラー ラメ" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -159,7 +159,7 @@
 <p class="store">HAMIYAショップ</p><h2>アルバム ポケット式 コレクトブック トレカ カードケース カード入れ 推し活 収納 推し カラー ハート 窓 ミニサイズ 写真 かわいい 可愛い お</h2>
 <div class="price-score-row"><div class="price">¥1,451<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥1,612</s></span><strong>¥161お得（9.99%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥1,612に対して現在¥1,451。¥161安く、9.99%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2F5000chanahana%2Fwfj-0901472.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="アルバム ポケット式 コレクトブック トレカ カードケース カード入れ 推し活 収納 推し カラー ハート 窓 ミニサイズ 写真 かわいい 可愛い お" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -169,7 +169,7 @@
 <p class="store">HAMIYAショップ</p><h2>トレカケース シンプル トレカホルダー チェキ用アルバム 2サイズ トレカバインダー コレクトブック 韓国 オタ活 推し活 グッズ トレカ 収納 デコ チェキ</h2>
 <div class="price-score-row"><div class="price">¥1,814<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥2,015</s></span><strong>¥201お得（9.98%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥2,015に対して現在¥1,814。¥201安く、9.98%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2F5000chanahana%2Fryp0704100.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="トレカケース シンプル トレカホルダー チェキ用アルバム 2サイズ トレカバインダー コレクトブック 韓国 オタ活 推し活 グッズ トレカ 収納 デコ チェキ" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -179,7 +179,7 @@
 <p class="store">HAMIYAショップ</p><h2>システム手帳 3穴 バインダー トレカケース リフィル付き ミニサイズ メモ帳 文房具 シンプル クリア 持ち運び 学生 学校 仕事用 ビジネス用</h2>
 <div class="price-score-row"><div class="price">¥1,786<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥1,984</s></span><strong>¥198お得（9.98%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥1,984に対して現在¥1,786。¥198安く、9.98%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2F5000chanahana%2Fwfj-090183.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="システム手帳 3穴 バインダー トレカケース リフィル付き ミニサイズ メモ帳 文房具 シンプル クリア 持ち運び 学生 学校 仕事用 ビジネス用" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -189,7 +189,7 @@
 <p class="store">HAMIYAショップ</p><h2>クリアポケット 10枚セット ファイル ケース アルバム A5 6穴 トレカ カード フォト 写真 リフィル 収納 整理 透明 柄入り ハート 星 花</h2>
 <div class="price-score-row"><div class="price">¥1,354<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥1,504</s></span><strong>¥150お得（9.97%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥1,504に対して現在¥1,354。¥150安く、9.97%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2F5000chanahana%2Fwfj-090186.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="クリアポケット 10枚セット ファイル ケース アルバム A5 6穴 トレカ カード フォト 写真 リフィル 収納 整理 透明 柄入り ハート 星 花" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -199,7 +199,7 @@
 <p class="store">Sugar Dream バインダー</p><h2>16 バインダー コレクトブック トレカ A5 6リング 6穴 チェック トレカケース おしゃれ ラメ クリア 推し ファスナー インスタ グッズ収納 チェキ KPOP</h2>
 <div class="price-score-row"><div class="price">¥1,498<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥1,598</s></span><strong>¥100お得（6.26%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥1,598に対して現在¥1,498。¥100安く、6.26%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Folive127%2Fbinder-16.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="16 バインダー コレクトブック トレカ A5 6リング 6穴 チェック トレカケース おしゃれ ラメ クリア 推し ファスナー インスタ グッズ収納 チェキ KPOP" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -209,7 +209,7 @@
 <p class="store">Sugar Dream バインダー</p><h2>39 シール帳 A5 バインダー 6リング 6穴  かわいい トレカケース ラメ クリア トレカ 推し ファスナー 中表紙　インスタ グッズ収納 チェキ 韓国 KPOP</h2>
 <div class="price-score-row"><div class="price">¥1,698<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥1,798</s></span><strong>¥100お得（5.56%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥1,798に対して現在¥1,698。¥100安く、5.56%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Folive127%2Fbinder-039.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="39 シール帳 A5 バインダー 6リング 6穴  かわいい トレカケース ラメ クリア トレカ 推し ファスナー 中表紙　インスタ グッズ収納 チェキ 韓国 KPOP" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -219,7 +219,7 @@
 <p class="store">Sugar Dream バインダー</p><h2>カードファイル 7穴 7リング バ25  クリア バインダー ポップコーン スリーブ アルバム リングバインド トレカ 収納 クリアポケット コレクトブック インスタ</h2>
 <div class="price-score-row"><div class="price">¥1,698<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥1,798</s></span><strong>¥100お得（5.56%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥1,798に対して現在¥1,698。¥100安く、5.56%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Folive127%2Fbinder-26.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="カードファイル 7穴 7リング バ25  クリア バインダー ポップコーン スリーブ アルバム リングバインド トレカ 収納 クリアポケット コレクトブック インスタ" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
 </article></li>
@@ -229,10 +229,10 @@
 <p class="store">ZOZOTOWN Yahoo!店</p><h2>カードケース JUNESELECT 推し活　スタンドトレカケース</h2>
 <div class="price-score-row"><div class="price">¥1,774<span>取得時の価格</span></div></div>
 <div class="sale-comparison" aria-label="割引価格の比較"><span>通常価格 <s>¥1,870</s></span><strong>¥96お得（5.13%OFF）</strong><small>Yahoo!ショッピングAPIの通常販売価格との比較。送料・ポイント・クーポンは含みません。</small></div><details class="recommendation-details"><summary>価格面で注目する理由</summary><p class="history-note">Yahoo!ショッピングAPIの通常販売価格¥1,870に対して現在¥1,774。¥96安く、5.13%OFFです。ただし過去最安値や今後の値動きは確認できないため、今が買い時とは断定できません。</p></details>
-<p class="fetched">取得日時：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p>
+<p class="fetched">取得日時：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p>
 <div class="shop-actions"><a class="product-link" href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3788407&amp;pid=892751360&amp;vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fzozo%2F77432074.html" data-umami-event="product-click" data-umami-event-store="yahoo" data-umami-event-category="トレカ" data-umami-event-product="カードケース JUNESELECT 推し活　スタンドトレカケース" data-umami-event-placement="ranking" target="_blank" rel="sponsored nofollow noopener noreferrer">Yahoo!ショッピングで見る <span aria-hidden="true">↗</span></a>
 </div>
-</article></li></ol></section><section class="site-information" aria-label="更新情報"><p class="updated">ランキング更新：<time datetime="2026-11-18T13:21:29.080733+00:00">2026年11月18日 22:21 JST</time></p></section>
+</article></li></ol></section><section class="site-information" aria-label="更新情報"><p class="updated">ランキング更新：<time datetime="2026-11-18T13:38:48.383284+00:00">2026年11月18日 22:38 JST</time></p></section>
   </main></div>
   <button type="button" id="next-product" class="next-product-button" aria-label="次の商品へ移動" title="次の商品へ移動" hidden><span aria-hidden="true">↓</span><span class="next-product-label">次の商品</span></button>
   <footer class="site-footer container"><p class="amazon-associate-disclosure">Amazonのアソシエイトとして、モノヨリは適格販売により収入を得ています。</p><nav class="footer-policy-links" aria-label="サイト情報"><a href="./info.html#contact">運営情報・お問い合わせ</a><a href="./info.html#advertising">広告・PRについて</a><a href="./info.html#privacy">プライバシーポリシー</a></nav><span class="footer-brand">モノヨリ</span><p>商品情報はYahoo!ショッピングの公式APIから取得したデータに基づきます。<br>Yahoo! JAPANが運営・推奨するサイトではありません。</p><!-- Begin Yahoo! JAPAN Web Services Attribution Snippet -->
