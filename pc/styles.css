@@ -594,4 +594,59 @@ select{border-radius:10px}
  .genre-switcher .genre-child-row:not([hidden]){margin-right:-13px;padding-right:13px}
  .genre-switcher .genre-child-row .genre-switch-tab{font-size:11px;min-height:36px;padding:8px 10px}
 }
+
+/* Ranking-first screen: header omikuji button, no large pre-ranking widget. */
+.header-inner .header-gacha{
+  display:inline-grid;place-items:center;position:relative;flex:none;
+  width:44px;height:44px;min-width:44px;min-height:44px;
+  margin-left:auto;padding:0;border-radius:12px;
+  background:#eaf3ec;color:#175c45;font-size:22px;
+}
+.header-inner .header-gacha:hover,.header-inner .header-gacha[aria-expanded="true"]{background:#d6e9dc}
+.header-inner .brand{margin-right:auto}
+.header-inner .header-gacha+.header-icon{margin-left:0}
+.gacha-popover[hidden]{display:none!important}
+.gacha-popover{
+  position:fixed;top:calc(70px + env(safe-area-inset-top));right:max(16px,calc((100vw - 1160px)/2 + 28px));
+  width:min(480px,calc(100vw - 32px));max-height:calc(100dvh - 86px - env(safe-area-inset-top));
+  overflow-y:auto;overscroll-behavior:contain;z-index:99;
+  border-radius:18px;background:#fff;padding:12px;
+  border:1px solid #d8e4d9;box-shadow:0 18px 50px #153b2b55;
+}
+.gacha-popover-header{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:3px 4px 11px;color:#173d2e;font-size:14px;
+}
+.gacha-popover-header button{
+  min-height:38px;border:1px solid #d2dfd6;background:#f7faf8;color:#315645;
+  padding:7px 12px;border-radius:9px;font:inherit;font-size:12px;cursor:pointer;
+}
+.gacha-popover .treasure-gacha{margin:0;padding:17px 13px;border-radius:14px;box-shadow:none}
+.gacha-popover .gacha-heading h2{font-size:18px}
+.gacha-popover .gacha-machine{max-width:170px;height:250px;margin:8px auto 0}
+.gacha-popover .gacha-rarity{font-size:10px}
+.ranking-footer-disclosure{margin:28px 0 8px}
+.ranking-footer-disclosure .page-disclosure{
+  margin:0;padding:11px 14px;background:#f8faf7;border:1px solid #dce3d9;
+  border-radius:10px;color:#637568;font-size:11px;
+}
+.ranking-footer-disclosure .page-disclosure strong{font-size:11px}
+.featured-footnote{margin:18px 0 14px;color:#667569;font-size:11px}
+#featured>.ranking-toolbar{margin-top:5px}
+#featured>.ranking-toolbar+.products{margin-top:10px}
+@media(max-width:600px){
+  .header-inner .header-gacha{width:42px;min-width:42px;height:42px;min-height:42px;font-size:21px}
+  .header-inner{gap:5px}
+  .gacha-popover{top:calc(65px + env(safe-area-inset-top));right:10px;left:10px;width:auto;
+    max-height:calc(100dvh - 75px - env(safe-area-inset-top));padding:10px}
+  #featured>.ranking-toolbar{margin-top:0}
+  .featured-footnote{font-size:11px}
+  .ranking-footer-disclosure{margin-top:22px}
+  .genre-switcher{margin-top:6px!important;margin-bottom:9px!important;padding-top:9px;padding-bottom:5px}
+  .genre-switcher-label{margin-bottom:4px}
+  .genre-switcher .genre-group-button{min-height:36px;padding:7px 1px}
+  .genre-switcher .genre-child-groups{min-height:42px}
+  .genre-switcher .genre-child-row:not([hidden]){padding-top:7px;padding-bottom:1px}
+  .genre-switcher .genre-child-row .genre-switch-tab{min-height:32px;padding:6px 9px}
+}
 \n/* PC-only preview */\n.container{max-width:1160px}.products{grid-template-columns:repeat(3,minmax(0,1fr))}\n

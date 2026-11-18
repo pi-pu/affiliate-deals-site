@@ -18,7 +18,7 @@
  const localGunpla=document.getElementById("gunpla-filter-input"),localAmazon=document.getElementById("amazon-filter-input");
  menuButton?.addEventListener("click",()=>{menu.hidden=!menu.hidden;menuButton.setAttribute("aria-expanded",String(!menu.hidden));});
  menu?.querySelectorAll('a').forEach(a=>a.addEventListener("click",()=>{menu.hidden=true;menuButton.setAttribute("aria-expanded","false");}));
- searchButton?.addEventListener("click",()=>{searchPanel.hidden=!searchPanel.hidden;searchButton.setAttribute("aria-expanded",String(!searchPanel.hidden));if(!searchPanel.hidden)search.focus();});
+ searchButton?.addEventListener("click",()=>{searchPanel.hidden=!searchPanel.hidden;searchButton.setAttribute("aria-expanded",String(!searchPanel.hidden));if(!searchPanel.hidden){document.getElementById("gacha-popover")?.setAttribute("hidden","");document.getElementById("gacha-toggle")?.setAttribute("aria-expanded","false");search.focus();}});
  document.getElementById("search-close")?.addEventListener("click",()=>{searchPanel.hidden=true;searchButton?.setAttribute("aria-expanded","false");searchButton?.focus();});
  // Select a parent category without creating a long, sideways child-tab list.
  document.querySelectorAll(".genre-group-button").forEach(button=>{
@@ -44,6 +44,33 @@
   genreStrip.scrollLeft=Math.max(0,preferred);
  };
  showCurrentGroup(document.querySelector(".genre-group-button.is-current"));
+ // Header omikuji is a compact, accessible popover rather than a block
+ // pushing the first ranking below the fold.
+ const gachaToggle=document.getElementById("gacha-toggle");
+ const gachaPopover=document.getElementById("gacha-popover");
+ const gachaClose=document.getElementById("gacha-popover-close");
+ const setGachaOpen=open=>{
+  if(!gachaPopover||!gachaToggle)return;
+  gachaPopover.hidden=!open;
+  gachaToggle.setAttribute("aria-expanded",String(open));
+  if(open){searchPanel&&(searchPanel.hidden=true);searchButton?.setAttribute("aria-expanded","false");}
+ };
+ gachaToggle?.addEventListener("click",()=>{
+  const next=!!gachaPopover?.hidden;
+  setGachaOpen(next);
+  if(next)gachaClose?.focus({preventScroll:true});
+ });
+ gachaClose?.addEventListener("click",()=>{setGachaOpen(false);gachaToggle?.focus({preventScroll:true});});
+ document.addEventListener("keydown",event=>{
+  if(event.key==="Escape"&&gachaPopover&&!gachaPopover.hidden){
+   setGachaOpen(false);gachaToggle?.focus({preventScroll:true});
+  }
+ });
+ document.addEventListener("click",event=>{
+  if(!gachaPopover||gachaPopover.hidden)return;
+  if(gachaPopover.contains(event.target)||gachaToggle?.contains(event.target))return;
+  setGachaOpen(false);
+ });
  const list=document.getElementById("products"),select=document.getElementById("sort-order");
 
  const cards=Array.from(list?.children||[]),tabs=Array.from(document.querySelectorAll(".category-tab"));
