@@ -71,6 +71,26 @@
   if(gachaPopover.contains(event.target)||gachaToggle?.contains(event.target))return;
   setGachaOpen(false);
  });
+ const figureCompareList=document.getElementById("figure-comparison-list");
+ const figureCompareButtons=Array.from(document.querySelectorAll("[data-figure-sort]"));
+ figureCompareButtons.forEach(button=>button.addEventListener("click",()=>{
+  if(!figureCompareList)return;
+  const mode=button.dataset.figureSort;
+  const entries=Array.from(figureCompareList.querySelectorAll(".figure-compare-entry"));
+  entries.sort((a,b)=>mode==="cheap"
+   ? Number(a.dataset.cheapest)-Number(b.dataset.cheapest)||Number(b.dataset.spread)-Number(a.dataset.spread)
+   : Number(b.dataset.spread)-Number(a.dataset.spread)||Number(a.dataset.cheapest)-Number(b.dataset.cheapest));
+  entries.forEach((entry,i)=>{
+   const rank=entry.querySelector(".figure-compare-rank");
+   if(rank)rank.textContent="第"+(i+1)+"位";
+   figureCompareList.appendChild(entry);
+  });
+  figureCompareButtons.forEach(control=>{
+   const active=control===button;
+   control.classList.toggle("is-current",active);
+   control.setAttribute("aria-pressed",String(active));
+  });
+ }));
  const figureTabs=Array.from(document.querySelectorAll(".figure-view-tab"));
  const figurePanels=Array.from(document.querySelectorAll(".figure-view-panel"));
  const switchFigureView=view=>{
