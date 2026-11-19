@@ -718,4 +718,7 @@ select{border-radius:10px}
 .figure-view-panel[hidden]{display:none!important}
 .figure-catalog-note{font-size:12px;color:#64786c;margin:3px 0 12px}
 @media(max-width:600px){.figure-view-tabs{gap:6px;margin:7px 0 12px}.figure-view-tab{font-size:12px;padding:9px 5px;min-height:43px}}
+
+/* JAN-matched figure shop comparisons */
+.figure-comparisons{margin:16px 0 24px}.figure-comparisons>h3{font-size:18px;margin:0 0 8px}.figure-price-compare{border:1px solid #dbe6dd;border-radius:12px;padding:14px;margin:12px 0;background:#fff}.figure-price-compare h3{font-size:15px;line-height:1.5;margin:0 0 6px}.figure-price-compare p{font-size:12px;color:#52695b;margin:0 0 10px}.figure-price-compare ol{list-style:none;margin:0;padding:0}.figure-price-compare li{display:flex;flex-wrap:wrap;gap:8px;align-items:center;border-top:1px solid #edf1ed;padding:9px 0;font-size:13px}.figure-price-compare li span{flex:1;min-width:120px}.figure-price-compare li strong{white-space:nowrap}.figure-price-compare li a{color:#146b46;text-decoration:underline}
 \n/* Mobile-only preview */\n.container{max-width:520px}.products{grid-template-columns:1fr}.header-caption{display:none}\n
