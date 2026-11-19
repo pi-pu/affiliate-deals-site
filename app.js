@@ -71,6 +71,19 @@
   if(gachaPopover.contains(event.target)||gachaToggle?.contains(event.target))return;
   setGachaOpen(false);
  });
+ const figureTabs=Array.from(document.querySelectorAll(".figure-view-tab"));
+ const figurePanels=Array.from(document.querySelectorAll(".figure-view-panel"));
+ const switchFigureView=view=>{
+  figureTabs.forEach(tab=>{
+   const selected=tab.dataset.figureView===view;
+   tab.classList.toggle("is-current",selected);
+   tab.setAttribute("aria-selected",String(selected));
+  });
+  figurePanels.forEach(panel=>{panel.hidden=panel.id!==("figure-"+view+"-panel");});
+  // Restore all cards before recomputing the visible 20.
+  render();
+ };
+ figureTabs.forEach(tab=>tab.addEventListener("click",()=>switchFigureView(tab.dataset.figureView)));
  const list=document.getElementById("products"),select=document.getElementById("sort-order");
 
  const cards=Array.from(list?.children||[]),tabs=Array.from(document.querySelectorAll(".category-tab"));
@@ -84,6 +97,7 @@
  const pageSize=20, pageMax=100, pagination=new Map();
  function paginate(reset=false){
   document.querySelectorAll("#genre-ranking ol.products, #gunpla-products, #products").forEach(listEl=>{
+   if(listEl.closest(".figure-view-panel[hidden]")){const old=pagination.get(listEl);if(old)old.button.hidden=true;return;}
    const eligible=Array.from(listEl.querySelectorAll(":scope > .product")).filter(el=>reset?!el.hidden:el.dataset.pageEligible==="1").slice(0,pageMax);
    if(reset)Array.from(listEl.querySelectorAll(":scope > .product")).forEach(el=>{el.dataset.pageEligible=String(!el.hidden?"1":"0");});
    let state=pagination.get(listEl);
@@ -132,7 +146,7 @@
   cards.forEach(c=>{c.hidden=true});
   ordered.forEach(c=>{c.hidden=false;list?.appendChild(c)});
   // Local filters are scoped: changing one ranking never hides other sections.
-  const genreCards=Array.from(document.querySelectorAll("#genre-ranking .product"));
+  const genreCards=Array.from(document.querySelectorAll("#genre-ranking .figure-view-panel:not([hidden]) .product, #genre-ranking > ol.products .product, #genre-ranking .fashion-category .product"));
   let genreVisible=0;
   genreCards.forEach(c=>{const show=!genreQ||norm(c.textContent).includes(genreQ);c.hidden=!show;if(show)genreVisible++});
   const genreStatus=document.getElementById("genre-filter-status");
