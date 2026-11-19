@@ -735,4 +735,23 @@ select{border-radius:10px}
  .gacha-console{gap:8px}
  .gacha-draw{font-size:16px;padding:10px 14px}
 }
+
+/* Mobile header omikuji: fit the entire drawing and draw button inside the visible popover. */
+@media(max-width:600px){
+ .gacha-popover{max-height:calc(100dvh - 105px - env(safe-area-inset-top));padding:8px;overflow-y:auto}
+ .gacha-popover-header{padding:2px 3px 7px}
+ .gacha-popover .treasure-gacha{padding:12px 11px}
+ .gacha-popover .gacha-heading{gap:5px}
+ .gacha-popover .gacha-heading h2{font-size:17px}
+ .gacha-popover .gacha-heading p{font-size:12px;line-height:1.45;margin:3px 0}
+ .gacha-popover .gacha-eyebrow{font-size:10px}
+ .gacha-popover .gacha-play-tag{font-size:10px;padding:3px 8px}
+ .gacha-popover .gacha-stage{display:flex;flex-direction:column;gap:2px;min-height:0}
+ .gacha-popover .gacha-machine{width:135px!important;height:190px!important;max-width:135px;margin:4px auto!important;transform:none}
+ .gacha-popover .omikuji-box{height:190px;transform:scale(.68);transform-origin:top center}
+ .gacha-popover .gacha-console{gap:5px;align-items:center;text-align:center;width:100%}
+ .gacha-popover .gacha-tagline{font-size:15px;margin:0}
+ .gacha-popover .gacha-draw{padding:10px 12px;font-size:16px;width:100%}
+ .gacha-popover .gacha-status,.gacha-popover .gacha-disclaimer{font-size:11px;margin:4px 0}
+}
 \n/* PC-only preview */\n.container{max-width:1160px}.products{grid-template-columns:repeat(3,minmax(0,1fr))}\n
