@@ -76,7 +76,7 @@
  function sortFigureComparisons(mode){
   if(!figureCompareList)return;
   const entries=Array.from(figureCompareList.querySelectorAll(".figure-compare-entry"));
-  const ratingEligible=entry=>entry.dataset.reviewRate!==""&&Number(entry.dataset.reviewCount)>=10;
+  const ratingEligible=entry=>Number(entry.dataset.reviewRate)>0&&Number(entry.dataset.reviewCount)>=10;
   entries.sort((a,b)=>mode==="rating"
    ? Number(b.dataset.reviewRate||0)-Number(a.dataset.reviewRate||0)
      ||Number(b.dataset.reviewCount||0)-Number(a.dataset.reviewCount||0)
@@ -97,6 +97,8 @@
   });
   const note=document.getElementById("figure-rating-note");
   if(note)note.hidden=mode!=="rating";
+  const empty=document.getElementById("figure-rating-empty");
+  if(empty)empty.hidden=mode!=="rating"||rankNumber>0;
   figureCompareButtons.forEach(control=>{
    const active=control.dataset.figureSort===mode;
    control.classList.toggle("is-current",active);
