@@ -287,7 +287,12 @@
   if(!offers.length){draw.disabled=true;}
   closeButton?.addEventListener("click",()=>dialog.close());
   dialog?.addEventListener("click",event=>{if(event.target===dialog)dialog.close();});
-  dialog?.addEventListener("close",()=>{draw.focus({preventScroll:true});});
+  // Dismissing the draw result also dismisses the header lottery panel.
+  // The native close event covers the button, backdrop, and Escape key.
+  dialog?.addEventListener("close",()=>{
+   setGachaOpen(false);
+   gachaToggle?.focus({preventScroll:true});
+  });
   let running=false;
   draw.addEventListener("click",()=>{
    if(running||!offers.length)return;
