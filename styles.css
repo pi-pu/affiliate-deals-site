@@ -721,3 +721,17 @@ select{border-radius:10px}
 
 /* JAN-matched figure shop comparisons */
 .figure-comparisons{margin:16px 0 24px}.figure-comparisons>h3{font-size:18px;margin:0 0 8px}.figure-price-compare{border:1px solid #dbe6dd;border-radius:12px;padding:14px;margin:12px 0;background:#fff}.figure-price-compare h3{font-size:15px;line-height:1.5;margin:0 0 6px}.figure-price-compare p{font-size:12px;color:#52695b;margin:0 0 10px}.figure-price-compare ol{list-style:none;margin:0;padding:0}.figure-price-compare li{display:flex;flex-wrap:wrap;gap:8px;align-items:center;border-top:1px solid #edf1ed;padding:9px 0;font-size:13px}.figure-price-compare li span{flex:1;min-width:120px}.figure-price-compare li strong{white-space:nowrap}.figure-price-compare li a{color:#146b46;text-decoration:underline}
+
+/* Keep the lottery launcher compact and the complete illustration visible on phones. */
+@media(max-width:600px){
+ .gacha-drawer{margin:10px 0 16px}
+ .gacha-launcher{min-height:0!important;height:auto!important;padding:12px 14px!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto;gap:4px 8px!important;align-items:center}
+ .gacha-launcher span{font-size:17px!important}
+ .gacha-launcher small{grid-column:1;width:auto!important;margin:0!important;font-size:11px!important}
+ .gacha-launcher::after{grid-column:2;grid-row:1 / span 2;margin:0!important;font-size:22px}
+ .gacha-drawer .treasure-gacha{padding:16px;margin:8px 0 12px}
+ .gacha-stage{min-height:0!important;gap:10px!important}
+ .gacha-machine{width:150px!important;height:205px!important;margin:8px auto 0!important;transform:scale(.82);transform-origin:center center}
+ .gacha-console{gap:8px}
+ .gacha-draw{font-size:16px;padding:10px 14px}
+}
