@@ -771,4 +771,10 @@ select{border-radius:10px}
 .figure-compare-rank{display:inline-block;font-weight:800;color:#195e43;margin:0 0 5px 4px}
 .figure-compare-entry{margin-bottom:15px}
 .figure-compare-entry .figure-price-compare{margin-top:0}
+
+/* Yahoo product reviews are supplemental, not a claim of verified sales. */
+.product-review{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:5px 0 9px;font-size:13px;color:#566a60}
+.product-review .review-stars{font-weight:800;color:#ad6a00}
+.product-review.is-unavailable{font-size:12px;color:#78847e}
+.figure-shop-review{font-size:11px;color:#8a5a12;white-space:nowrap}
 \n/* PC-only preview */\n.container{max-width:1160px}.products{grid-template-columns:repeat(3,minmax(0,1fr))}\n

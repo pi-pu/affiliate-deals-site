@@ -73,24 +73,38 @@
  });
  const figureCompareList=document.getElementById("figure-comparison-list");
  const figureCompareButtons=Array.from(document.querySelectorAll("[data-figure-sort]"));
- figureCompareButtons.forEach(button=>button.addEventListener("click",()=>{
+ function sortFigureComparisons(mode){
   if(!figureCompareList)return;
-  const mode=button.dataset.figureSort;
   const entries=Array.from(figureCompareList.querySelectorAll(".figure-compare-entry"));
-  entries.sort((a,b)=>mode==="cheap"
+  const ratingEligible=entry=>entry.dataset.reviewRate!==""&&Number(entry.dataset.reviewCount)>=10;
+  entries.sort((a,b)=>mode==="rating"
+   ? Number(b.dataset.reviewRate||0)-Number(a.dataset.reviewRate||0)
+     ||Number(b.dataset.reviewCount||0)-Number(a.dataset.reviewCount||0)
+     ||Number(a.dataset.cheapest)-Number(b.dataset.cheapest)
+   : mode==="cheap"
    ? Number(a.dataset.cheapest)-Number(b.dataset.cheapest)||Number(b.dataset.spread)-Number(a.dataset.spread)
    : Number(b.dataset.spread)-Number(a.dataset.spread)||Number(a.dataset.cheapest)-Number(b.dataset.cheapest));
-  entries.forEach((entry,i)=>{
+  let rankNumber=0;
+  entries.forEach(entry=>{
+   const eligible=mode!=="rating"||ratingEligible(entry);
+   entry.hidden=!eligible||rankNumber>=20;
    const rank=entry.querySelector(".figure-compare-rank");
-   if(rank)rank.textContent="第"+(i+1)+"位";
+   if(eligible){
+    rankNumber++;
+    if(rank)rank.textContent="第"+rankNumber+"位";
+   }
    figureCompareList.appendChild(entry);
   });
+  const note=document.getElementById("figure-rating-note");
+  if(note)note.hidden=mode!=="rating";
   figureCompareButtons.forEach(control=>{
-   const active=control===button;
+   const active=control.dataset.figureSort===mode;
    control.classList.toggle("is-current",active);
    control.setAttribute("aria-pressed",String(active));
   });
- }));
+ }
+ figureCompareButtons.forEach(button=>button.addEventListener("click",()=>sortFigureComparisons(button.dataset.figureSort)));
+ sortFigureComparisons("spread");
  const figureTabs=Array.from(document.querySelectorAll(".figure-view-tab"));
  const figurePanels=Array.from(document.querySelectorAll(".figure-view-panel"));
  const switchFigureView=view=>{
@@ -161,6 +175,13 @@
   const ordered=candidates.sort((a,b)=>{
    if(mode==="price-asc")return Number(a.dataset.price)-Number(b.dataset.price)||dealRank(a,b);
    if(mode==="price-desc")return Number(b.dataset.price)-Number(a.dataset.price)||dealRank(a,b);
+   if(mode==="review-rate"){
+    const ra=a.dataset.reviewRate===""?-1:Number(a.dataset.reviewRate);
+    const rb=b.dataset.reviewRate===""?-1:Number(b.dataset.reviewRate);
+    return rb-ra||Number(b.dataset.reviewCount||0)-Number(a.dataset.reviewCount||0)||dealRank(a,b);
+   }
+   if(mode==="review-count")return Number(b.dataset.reviewCount||0)-Number(a.dataset.reviewCount||0)
+    ||Number(b.dataset.reviewRate||0)-Number(a.dataset.reviewRate||0)||dealRank(a,b);
    return dealRank(a,b);
   }).slice(0,pageMax);
   cards.forEach(c=>{c.hidden=true});
